@@ -14,7 +14,7 @@ body {
 }
 .square.black {
   outline: 1px solid black;
-  background: darkgreen;
+  background: #37797D;
 }
 .square.white {
   outline: 1px solid black;

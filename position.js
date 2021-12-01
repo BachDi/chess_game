@@ -29,6 +29,36 @@ const position = [
     id: ["b1", "g1"],
     link: "asset/knight_white.png"
   },
+  {
+    name: "bishopBlack",
+    id: ["c8", "f8"],
+    link: "asset/bishop_black.png"
+  },
+  {
+    name: "bishopWhite",
+    id: ["c1", "f1"],
+    link: "asset/bishop_white.png"
+  },
+  {
+    name: "queenBlack",
+    id: ["d8"],
+    link: "asset/queen_black.png"
+  },
+  {
+    name: "queenWhite",
+    id: ["d1"],
+    link: "asset/queen_white.png"
+  },
+  {
+    name: "kingBlack",
+    id: ["e8"],
+    link: "asset/king_black.png"
+  },
+  {
+    name: "kingWhite",
+    id: ["e1"],
+    link: "asset/king_white.png"
+  }
 ]
 
 function setCreep(id, url) {
