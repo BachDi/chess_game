@@ -18,10 +18,8 @@ function Board() {
       this.square.setAttribute('id', `${column[columnId]}${rowId}`);
       this.rowId.appendChild(this.square);
       if (rowId !== 0) {
-        if (columnId === 0) {//
-        } else if (rowId % 2 === 0 && columnId % 2 === 0) {
-          this.square.classList.add("black")
-        } else if (rowId % 2 !== 0 && columnId % 2 !== 0) {
+        if (columnId === 0) {
+        } else if ((rowId + columnId) % 2 === 0) {
           this.square.classList.add("black")
         } else {
           this.square.classList.add("white")
@@ -29,10 +27,6 @@ function Board() {
       }
     }
   }
-}
-
-function QuanCo(id){
-  
 }
 
 //jesus
