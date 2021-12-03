@@ -27,6 +27,9 @@ function Board() {
       }
     }
   }
+  this.changeSquareColor = function (x, y) {
+    document.getElementById(`${column[x]}${y}`).style.backgroundColor = "yellow"
+  }
 }
 
 //jesus
