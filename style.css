@@ -12,11 +12,11 @@ body {
   justify-content: center;
   align-items: center;
 }
-.square.black {
+.black {
   outline: 1px solid black;
   background: #37797D;
 }
-.square.white {
+.white {
   outline: 1px solid black;
   background: white
 }
@@ -24,6 +24,11 @@ body {
   display: flex;
   justify-content: center;
 }
-.square.chosen {
+.square.black:hover {
   background: red;
+  transition: 0.5s;
+}
+.square.white:hover {
+  background: red;
+  transition: 0.5s;
 }

@@ -28,3 +28,4 @@ function Pawn(isWhite, id){
     }
   }
 }
+//fk chess :D
