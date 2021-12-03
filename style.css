@@ -24,3 +24,6 @@ body {
   display: flex;
   justify-content: center;
 }
+.square.chosen {
+  background: red;
+}
