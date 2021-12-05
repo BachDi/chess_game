@@ -1,0 +1,9 @@
+@startuml Queen
+[*] --> Created
+Created --> Wait
+Wait --> Chosen
+Chosen --> Move
+Move --> Wait
+Wait --> Killed
+Killed --> [*]
+@enduml

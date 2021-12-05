@@ -1,0 +1,18 @@
+@startuml playerUseCase
+left to right direction
+actor Player as p
+usecase "Start game" as startGame
+usecase "End game" as endGame
+usecase "Move pieces" as movePieces
+usecase "Take pieces" as takePieces
+usecase "Check" as check
+usecase "Check mate" as checkMate
+usecase "Promote pawn" as promote
+p --> startGame
+p --> endGame
+p --> movePieces
+movePieces --> takePieces
+movePieces --> check
+movePieces --> checkMate
+movePieces --> promote
+@enduml

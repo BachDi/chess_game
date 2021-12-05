@@ -1,0 +1,11 @@
+@startuml Pawn 
+[*] --> Created
+Created --> Wait
+Wait --> Chosen
+Chosen --> Move
+Move --> Wait
+Move --> Promote
+Promote --> Wait
+Wait --> Killed
+Killed --> [*]
+@enduml

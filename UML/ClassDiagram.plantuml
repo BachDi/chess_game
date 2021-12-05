@@ -1,4 +1,12 @@
-@startuml piece
+@startuml ChessBoard
+skinparam groupInheritance 2
+class ChessBoard {
+    + create()
+    + addSquareToRow()
+    + changeSquareColor()
+}
+ChessBoard <-- ChessPiece
+ChessBoard <-- Controller
 class ChessPiece {
     + id
     + name 
