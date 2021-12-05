@@ -1,0 +1,7 @@
+@startuml player
+    class player{
+        + id 
+    }
+    player <|-- player1
+    player <|-- player2
+@enduml

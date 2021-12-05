@@ -1,0 +1,16 @@
+@startuml piece
+class ChessPiece {
+    + id
+    + name 
+    + url 
+    + setPiece() 
+    + chosen() 
+    + recommendMoves() 
+}
+ChessPiece <|-- Pawn 
+ChessPiece <|-- Rook 
+ChessPiece <|-- Knight 
+ChessPiece <|-- Bishop 
+ChessPiece <|-- Queen  
+ChessPiece <|-- King 
+@enduml
