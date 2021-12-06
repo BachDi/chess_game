@@ -1,12 +1,10 @@
 @startuml Pawn 
-[*] --> Created
-Created --> Wait
-Wait --> Chosen
-Chosen --> Move
-Chosen --> Wait
+[*] --> Wait : created
+Wait --> Chosen : clicked on
+Chosen --> Move : clicked on\n available square 
+Chosen --> Wait : cancel
 Move --> Wait
-Move --> Promote
+Move --> Promote : reach the end\n of the board
 Promote --> Wait
-Wait --> Taken
-Taken --> [*]
+Wait --> [*] : taken
 @enduml

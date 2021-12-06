@@ -1,15 +1,14 @@
 @startuml King
-[*] --> Created
-Created --> Wait
-Wait --> Chosen
-Chosen --> Move
-Chosen --> Wait
+[*] --> Wait : created
+Wait --> Chosen : clicked on
+Chosen --> Move : clicked on\n avaiable square
+Chosen --> Wait : cancel
 Move --> Wait
-Wait --> Checked
-Checked --> Move
-Checked --> Wait
-Checked --> Taken
-Wait --> Checkmate
-Checkmate --> [*]
-Taken --> [*]
+Wait --> Check : checked
+Check --> Wait : unchecked
+Check --> Chosen : clicked on
+Chosen --> Check : cancel
+Check --> Move : clicked on\n avaiable square
+Check --> [*] : made illegal move
+Wait --> [*] : checkmate/stalemate
 @enduml
