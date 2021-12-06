@@ -3,7 +3,8 @@
 Created --> Wait
 Wait --> Chosen
 Chosen --> Move
+Chosen --> Wait
 Move --> Wait
-Wait --> Killed
-Killed --> [*]
+Wait --> Taken
+Taken --> [*]
 @enduml

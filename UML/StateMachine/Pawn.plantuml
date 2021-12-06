@@ -3,9 +3,10 @@
 Created --> Wait
 Wait --> Chosen
 Chosen --> Move
+Chosen --> Wait
 Move --> Wait
 Move --> Promote
 Promote --> Wait
-Wait --> Killed
-Killed --> [*]
+Wait --> Taken
+Taken --> [*]
 @enduml

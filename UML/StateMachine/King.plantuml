@@ -1,0 +1,15 @@
+@startuml King
+[*] --> Created
+Created --> Wait
+Wait --> Chosen
+Chosen --> Move
+Chosen --> Wait
+Move --> Wait
+Wait --> Checked
+Checked --> Move
+Checked --> Wait
+Checked --> Taken
+Wait --> Checkmate
+Checkmate --> [*]
+Taken --> [*]
+@enduml

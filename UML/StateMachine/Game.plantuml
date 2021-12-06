@@ -1,0 +1,16 @@
+@startuml Game
+left to right direction
+[*] --> WhiteToPlay 
+WhiteToPlay --> BlackToPlay : white plays
+BlackToPlay --> WhiteToPlay : black plays
+state EndGameStates {
+    state WhiteWins
+    state Draw
+    state BlackWins
+}
+WhiteToPlay --> WhiteWins : checkmate
+BlackToPlay --> BlackWins : checkmate
+WhiteToPlay --> Draw : stalemate
+BlackToPlay --> Draw : stalemate
+EndGameStates --> [*]
+@enduml

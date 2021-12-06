@@ -12,7 +12,7 @@ class ChessPiece {
     + name 
     + url 
     + setPiece() 
-    + chosen() 
+    + isChosen() 
     + recommendMoves() 
 }
 ChessPiece <|-- Pawn 
