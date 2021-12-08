@@ -8,13 +8,18 @@ function ChessPiece(name, id, url) {
     img.src = this.url
     square.appendChild(img)
     square.addEventListener("mouseup", () => {
-      this.chosen(this.id);
+      this.isChosen(this.id);
       this.recommendMoves(this.id);
-      })
+    })
   }
-  this.chosen = function (id) {
+  this.isChosen = function (id) {
     this.id = id
-    console.log(this.id)
+    document.getElementById(id).classList.add("chosen")
+    this.isNotChosen(this.id)
   }
-  this.recommendMoves = function(id){};
+  this.isNotChosen = function (id) {
+    const squares = document.querySelectorAll(`.square:not(#${id})`)
+    squares.forEach(square => square.classList.remove("chosen"))
+  }
+  this.recommendMoves = function (id) { };
 }

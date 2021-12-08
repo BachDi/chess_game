@@ -17,18 +17,16 @@ function Board() {
       this.square.className = "square";
       this.square.setAttribute('id', `${column[columnId]}${rowId}`);
       this.rowId.appendChild(this.square);
-      if (rowId !== 0) {
-        if (columnId === 0) {
-        } else if ((rowId + columnId) % 2 === 0) {
-          this.square.classList.add("black")
-        } else {
-          this.square.classList.add("white")
-        }
-      }
+      rowId * columnId !== 0 && ((rowId + columnId) % 2 === 0 ? this.square.classList.add("black") : this.square.classList.add("white"))
     }
   }
   this.changeSquareColor = function (x, y) {
-    document.getElementById(`${column[x]}${y}`).style.backgroundColor = "yellow"
+    const id = `${column[x]}${y}`
+    document.getElementById(id).classList.add("recommend")
+  }
+  this.resetSquareColor = (id) => {
+    const squares = document.querySelectorAll(`.square:not(#${id})`)
+    squares.forEach(square => square.classList.remove("recommend"))
   }
 }
 

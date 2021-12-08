@@ -32,3 +32,15 @@ body {
   background: red;
   transition: 0.5s;
 }
+.square.black.recommend {
+  background: yellow;
+}
+.square.white.recommend {
+  background: yellow;
+}
+.square.black.chosen {
+  background: red;
+}
+.square.white.chosen {
+  background: red;
+}
