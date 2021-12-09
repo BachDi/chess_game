@@ -30,9 +30,5 @@ function Pawn(isWhite, id) {
   this.currentId = function () {
 
   }
-  this.move = function (id) {
-    let optionCells = []
-    const squares = document.getElementById(id)
-  }
 }
 //fk chess :D

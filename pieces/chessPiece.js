@@ -7,18 +7,18 @@ function ChessPiece(name, id, url) {
     const img = document.createElement("img")
     img.src = this.url
     square.appendChild(img)
-    square.addEventListener("mouseup", () => {
+    square.addEventListener("click", () => {
       this.isChosen(this.id);
       this.recommendMoves(this.id);
     })
   }
   this.isChosen = function (id) {
     this.id = id
+    this.isNotChosen()
     document.getElementById(id).classList.add("chosen")
-    this.isNotChosen(this.id)
   }
-  this.isNotChosen = function (id) {
-    const squares = document.querySelectorAll(`.square:not(#${id})`)
+  this.isNotChosen = function () {
+    const squares = document.querySelectorAll(`.square`)
     squares.forEach(square => square.classList.remove("chosen"))
   }
   this.recommendMoves = function (id) { };
