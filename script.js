@@ -51,17 +51,13 @@ function Board() {
     const square = document.getElementById(id);
     console.log(square.name)
     if (square.classList.contains("recommend")) {
-      const img = document.createElement("img");
-      img.src = document.querySelector(".chosen img").src;
+      square.firstChild.src = document.querySelector(".chosen img").src;
       const current = document.querySelector(".chosen")
-      console.log(current.getAttribute("name"));
-      square.name = current.getAttribute("name");
-      console.log(square.name)
+      square.setAttribute("name", current.getAttribute("name"))
       current.setAttribute("name", "")
       current.firstChild.src = ''
       current.classList.remove("chosen")
       this.resetSquareColor()
-      square.appendChild(img);
     }
 
   };
