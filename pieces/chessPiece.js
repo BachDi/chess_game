@@ -6,6 +6,7 @@ function ChessPiece(name, id, url) {
     const square = document.getElementById(this.id);
     const img = document.createElement("img")
     img.src = this.url
+    // square.img.setAttribute("src", `${this.url}`)
     square.appendChild(img)
     square.setAttribute("name", name)
     square.addEventListener("click", () => {
@@ -29,7 +30,6 @@ function ChessPiece(name, id, url) {
       case 'pawn':
         this.recommendMovesForPawns(id);
         break;
-
     }
   };
 }

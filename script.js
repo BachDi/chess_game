@@ -18,6 +18,7 @@ function Board() {
       this.square.setAttribute('id', `${column[columnId]}${rowId}`);
       this.rowId.appendChild(this.square);
       this.img = document.createElement("img");
+      this.img.setAttribute("src", "");
       this.rowId.appendChild(this.img);
       rowId * columnId !== 0 && ((rowId + columnId) % 2 === 0 ? this.square.classList.add("black") : this.square.classList.add("white"))
     }
