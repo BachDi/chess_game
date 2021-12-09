@@ -2,7 +2,7 @@ function Pawn(isWhite, id) {
   const pawnUrl = isWhite ? "asset/pawn_white.png" : "asset/pawn_black.png"
   this.isWhite = isWhite;
   ChessPiece.call(this, "pawn", id, pawnUrl);
-  this.recommendMoves = function (id) {
+  this.recommendMovesForPawns = function (id) {
     let x = this.id.charAt(0);
     let y = parseInt(this.id.charAt(1));
     x = column.findIndex(value => value === x)

@@ -29,18 +29,32 @@ function Board() {
     const squares = document.querySelectorAll(`.square`)
     squares.forEach(square => {
       square.classList.remove("recommend");
+      square.removeEventListener("click", () => this.movePiece(`${id}`));
+      square.removeEventListener("mouseup", () => {
+        this.isChosen(this.id);
+        this.recommendMoves(this.id);
+      })
     })
   }
+  this.oldId = function () {
+    
+  };
+  this.currentId = function() {
+    
+  };
   this.movePiece = function (id) {
     console.log(id)
     const square = document.getElementById(id);
-    const img = document.createElement("img");
+    if (square.classList.contains("recommend")){
+      const img = document.createElement("img");
     img.src = document.querySelector(".chosen img").src;
     const current = document.querySelector(".chosen")
     current.removeChild(current.firstChild)
     current.classList.remove("chosen")
     this.resetSquareColor()
     square.appendChild(img);
+    
+    }
     
   };
 }

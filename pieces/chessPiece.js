@@ -21,5 +21,13 @@ function ChessPiece(name, id, url) {
     const squares = document.querySelectorAll(`.square`)
     squares.forEach(square => square.classList.remove("chosen"))
   }
-  this.recommendMoves = function (id) { };
+  this.recommendMoves = function (id) {
+    const pieceName = this.name;
+    console.log(pieceName);
+    switch (pieceName) {
+      case 'pawn':
+        this.recommendMovesForPawns(id);
+        break;
+    }
+  };
 }
