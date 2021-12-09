@@ -23,11 +23,18 @@ function Board() {
   this.changeSquareColor = function (x, y) {
     const id = `${column[x]}${y}`
     document.getElementById(id).classList.add("recommend")
+    document.getElementById(id).setAttribute("onclick", `board.movePiece(${id})`)
+
   }
   this.resetSquareColor = (id) => {
     const squares = document.querySelectorAll(`.square:not(#${id})`)
-    squares.forEach(square => square.classList.remove("recommend"))
+    squares.forEach(square => {
+      square.classList.remove("recommend");
+      square.removeAttribute("onclick")
+    })
   }
+  this.movePiece = function (id) {
+  };
 }
 
 //jesus
