@@ -17,6 +17,8 @@ function Board() {
       this.square.className = "square";
       this.square.setAttribute('id', `${column[columnId]}${rowId}`);
       this.rowId.appendChild(this.square);
+      this.img = document.createElement("img");
+      this.rowId.appendChild(this.img);
       rowId * columnId !== 0 && ((rowId + columnId) % 2 === 0 ? this.square.classList.add("black") : this.square.classList.add("white"))
     }
   }
@@ -29,11 +31,11 @@ function Board() {
     const squares = document.querySelectorAll(`.square`)
     squares.forEach(square => {
       square.classList.remove("recommend");
-      square.removeEventListener("click", () => this.movePiece(`${id}`));
-      square.removeEventListener("mouseup", () => {
-        this.isChosen(this.id);
-        this.recommendMoves(this.id);
-      })
+      // square.removeEventListener("click", () => this.movePiece(`${id}`));
+      // square.removeEventListener("mouseup", () => {
+      //   this.isChosen(this.id);
+      //   this.recommendMoves(this.id);
+      // })
     })
   }
   this.oldId = function () {
@@ -45,10 +47,15 @@ function Board() {
   this.movePiece = function (id) {
     console.log(id)
     const square = document.getElementById(id);
+    console.log(square.name)
     if (square.classList.contains("recommend")) {
       const img = document.createElement("img");
       img.src = document.querySelector(".chosen img").src;
       const current = document.querySelector(".chosen")
+      console.log(current.getAttribute("name"));
+      square.name = current.getAttribute("name");
+      console.log(square.name)
+      current.setAttribute("name", "")
       current.firstChild.src = ''
       current.classList.remove("chosen")
       this.resetSquareColor()
