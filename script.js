@@ -1,4 +1,5 @@
 const column = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+const link = window.location.href
 function Board() {
   this.layout = document.getElementById("chessboard");
   this.create = function () {
@@ -19,7 +20,7 @@ function Board() {
       this.rowId.appendChild(this.square);
       this.img = document.createElement("img");
       this.img.setAttribute("src", "");
-      this.rowId.appendChild(this.img);
+      this.square.appendChild(this.img);
       rowId * columnId !== 0 && ((rowId + columnId) % 2 === 0 ? this.square.classList.add("black") : this.square.classList.add("white"))
     }
   }
