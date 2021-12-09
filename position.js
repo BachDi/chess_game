@@ -73,3 +73,13 @@ blackQueen.setPiece();
 
 const blackKing = new King(false, "e8");
 blackKing.setPiece();
+
+for (i = 3; i < 7; i++) {
+  column.forEach((letter, index) => {
+    if (letter !== "") {
+      let cell = `${letter}${i}`;
+      const emptySquare = new Empty(false, cell);
+      emptySquare.setPiece();
+    }
+  });
+}

@@ -10,6 +10,7 @@ function ChessPiece(name, id, url) {
     square.firstChild.src = this.url
     square.setAttribute("name", this.name)
     square.addEventListener("click", () => {
+      console.log("click");
       if (document.getElementById(this.id).firstChild.src !== link) {
         this.isChosen(this.id);
         this.recommendMoves(this.id);
