@@ -5,16 +5,13 @@ function Pawn(isWhite, id) {
   this.recommendMoves = function (id) {
     let x = this.id.charAt(0);
     let y = parseInt(this.id.charAt(1));
-    const square = document.getElementById(id)
     x = column.findIndex(value => value === x)
     // console.log(x, y);
-    board.resetSquareColor(id)
+    board.resetSquareColor()
     if (this.isWhite === true) {
       if (y === 2) {
         for (i = y + 1; i <= y + 2; i++) {
-          if (square.classList.contains("chosen")) {
-            board.changeSquareColor(x, i);
-          }
+          board.changeSquareColor(x, i);
         }
       } else {
       }
@@ -26,6 +23,16 @@ function Pawn(isWhite, id) {
       } else {
       }
     }
+  }
+  this.oldId = function () {
+
+  }
+  this.currentId = function () {
+
+  }
+  this.move = function (id) {
+    let optionCells = []
+    const squares = document.getElementById(id)
   }
 }
 //fk chess :D

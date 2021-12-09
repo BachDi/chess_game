@@ -23,17 +23,25 @@ function Board() {
   this.changeSquareColor = function (x, y) {
     const id = `${column[x]}${y}`
     document.getElementById(id).classList.add("recommend")
-    document.getElementById(id).setAttribute("onclick", `board.movePiece(${id})`)
-
+    document.getElementById(id).addEventListener("click", () => this.movePiece(`${id}`))
   }
-  this.resetSquareColor = (id) => {
-    const squares = document.querySelectorAll(`.square:not(#${id})`)
+  this.resetSquareColor = () => {
+    const squares = document.querySelectorAll(`.square`)
     squares.forEach(square => {
       square.classList.remove("recommend");
-      square.removeAttribute("onclick")
     })
   }
   this.movePiece = function (id) {
+    console.log(id)
+    const square = document.getElementById(id);
+    const img = document.createElement("img");
+    img.src = document.querySelector(".chosen img").src;
+    const current = document.querySelector(".chosen")
+    current.removeChild(current.firstChild)
+    current.classList.remove("chosen")
+    this.resetSquareColor()
+    square.appendChild(img);
+    
   };
 }
 

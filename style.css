@@ -40,7 +40,9 @@ body {
 }
 .square.black.chosen {
   background: red;
+  opacity: 0.7;
 }
 .square.white.chosen {
   background: red;
+  opacity: 0.7;
 }
