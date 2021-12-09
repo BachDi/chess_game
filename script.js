@@ -37,25 +37,24 @@ function Board() {
     })
   }
   this.oldId = function () {
-    
+
   };
-  this.currentId = function() {
-    
+  this.currentId = function () {
+
   };
   this.movePiece = function (id) {
     console.log(id)
     const square = document.getElementById(id);
-    if (square.classList.contains("recommend")){
+    if (square.classList.contains("recommend")) {
       const img = document.createElement("img");
-    img.src = document.querySelector(".chosen img").src;
-    const current = document.querySelector(".chosen")
-    current.removeChild(current.firstChild)
-    current.classList.remove("chosen")
-    this.resetSquareColor()
-    square.appendChild(img);
-    
+      img.src = document.querySelector(".chosen img").src;
+      const current = document.querySelector(".chosen")
+      current.firstChild.src = ''
+      current.classList.remove("chosen")
+      this.resetSquareColor()
+      square.appendChild(img);
     }
-    
+
   };
 }
 
