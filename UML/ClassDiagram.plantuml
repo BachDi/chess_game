@@ -17,6 +17,7 @@ class ChessPiece {
 }
 class Pawn {
     + recommendMovesForPawn()
+    + promote()
 }
 class Knight {
     + recommendMovesForKnight()
@@ -32,9 +33,12 @@ class Queen {
 }
 class King {
     + recommendMovesForKing()
+    + isChecked()
+    + isCheckmate()
+    + castle()
 }
 
-ChessBoard <-- ChessPiece
+ChessBoard "1" <-- "n" ChessPiece
 ChessBoard <-- Controller
 ChessPiece <|-- Pawn 
 ChessPiece <|-- Rook 
