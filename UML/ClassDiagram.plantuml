@@ -5,16 +5,37 @@ class ChessBoard {
     + addSquareToRow()
     + changeSquareColor()
 }
-ChessBoard <-- ChessPiece
-ChessBoard <-- Controller
 class ChessPiece {
     + id
     + name 
     + url 
     + setPiece() 
     + isChosen() 
+    + isNotChosen()
+    + isEmpty()
     + recommendMoves() 
 }
+class Pawn {
+    + recommendMovesForPawn()
+}
+class Knight {
+    + recommendMovesForKnight()
+}
+class Rook {
+    + recommendMovesForRook()
+}
+class Bishop {
+    + recommendMovesForBishop()
+}
+class Queen {
+    + recommendMovesForQueen()
+}
+class King {
+    + recommendMovesForKing()
+}
+
+ChessBoard <-- ChessPiece
+ChessBoard <-- Controller
 ChessPiece <|-- Pawn 
 ChessPiece <|-- Rook 
 ChessPiece <|-- Knight 

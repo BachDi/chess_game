@@ -21,10 +21,10 @@ startGame --> 2p
 p --> saveGame
 p --> loadGame
 p --> movePieces
-movePieces --> takePieces
-movePieces --> check
-movePieces --> checkMate
-movePieces --> promote
-movePieces --> undo
+movePieces ..|> takePieces : extends
+movePieces ..|> check : extends
+movePieces ..|> checkMate : extends
+movePieces ..|> promote : extends
+movePieces ..|> undo : extends
 p --> endGame
 @enduml
