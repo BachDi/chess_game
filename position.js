@@ -8,7 +8,7 @@ whiteKnight1.setPiece();
 const whiteKnight2 = new Knight(true, "g1");
 whiteKnight2.setPiece();
 
-const whiteBishop1 = new Bishop(true, "c1");
+const whiteBishop1 = new Bishop(true, "c1");  
 whiteBishop1.setPiece();
 const whiteBishop2 = new Bishop(true, "f1");
 whiteBishop2.setPiece();

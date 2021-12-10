@@ -30,7 +30,7 @@ function Board() {
   };
   this.changeSquareColor = function (x, y) {
     const id = `${column[x]}${y}`;
-    console.log(id);
+    // console.log(id);
     const square = document.getElementById(id);
     square.classList.add("recommend");
     square.addEventListener("click", () => this.movePiece(`${id}`));
@@ -59,6 +59,9 @@ function Board() {
       current.classList.remove("chosen");
       this.resetSquareColor();
     }
+  };
+  this.setPosition = function (id) {
+    return id;
   };
 }
 

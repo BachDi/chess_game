@@ -6,7 +6,7 @@ function Queen(isWhite, id) {
     let x = this.id.charAt(0);
     let y = parseInt(this.id.charAt(1));
     x = column.findIndex((value) => value === x);
-    console.log(x, y);
+    // console.log(x, y);
     board.resetSquareColor();
     for (let top = y + 1; top <= 8; top++) {
       if (!this.isEmpty(`${column[x]}${top}`)) {
