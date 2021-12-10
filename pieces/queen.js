@@ -13,24 +13,40 @@ function Queen(isWhite, id, key) {
         break;
       }
       board.changeSquareColor(x, top);
+      const id = `${column[x]}${top}`;
+      document
+        .getElementById(id)
+        .addEventListener("click", () => board.movePiece(id));
     }
     for (let bottom = y - 1; bottom > 0; bottom--) {
       if (!this.isEmpty(`${column[x]}${bottom}`)) {
         break;
       }
       board.changeSquareColor(x, bottom);
+      const id = `${column[x]}${bottom}`;
+      document
+        .getElementById(id)
+        .addEventListener("click", () => board.movePiece(id));
     }
     for (let right = x + 1; right <= 8; right++) {
       if (!this.isEmpty(`${column[right]}${y}`)) {
         break;
       }
       board.changeSquareColor(right, y);
+      const id = `${column[right]}${y}`;
+      document
+        .getElementById(id)
+        .addEventListener("click", () => board.movePiece(id));
     }
     for (let left = x - 1; left > 0; left--) {
       if (!this.isEmpty(`${column[left]}${y}`)) {
         break;
       }
       board.changeSquareColor(left, y);
+      const id = `${column[left]}${y}`;
+      document
+        .getElementById(id)
+        .addEventListener("click", () => board.movePiece(id));
     }
   };
 }

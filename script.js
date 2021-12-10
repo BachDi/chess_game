@@ -33,7 +33,7 @@ function Board() {
     // console.log(id);
     const square = document.getElementById(id);
     square.classList.add("recommend");
-    square.addEventListener("click", () => this.movePiece(`${id}`));
+    // square.addEventListener("click", () => this.movePiece(`${id}`));
   };
   this.resetSquareColor = () => {
     const squares = document.querySelectorAll(`.square`);
@@ -49,6 +49,7 @@ function Board() {
   this.oldId = function () {};
   this.currentId = function () {};
   this.movePiece = function (id) {
+    console.log(id);
     const square = document.getElementById(id);
     if (square.classList.contains("recommend")) {
       square.firstChild.src = document.querySelector(".chosen img").src;

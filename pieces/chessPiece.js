@@ -16,7 +16,8 @@ function ChessPiece(name, id, url, key) {
     });
   };
   this.isChosen = function (id) {
-    console.log(this.key);
+    // console.log(this.id);
+    // console.log(whitePawn8);
     this.id = id;
     this.isNotChosen();
     document.getElementById(id).classList.add("chosen");
@@ -28,7 +29,7 @@ function ChessPiece(name, id, url, key) {
   };
   this.recommendMoves = function (id) {
     const pieceName = this.name;
-    console.log(pieceName, id);
+    // console.log(pieceName, id);
     switch (pieceName) {
       case "pawn":
         this.recommendMovesForPawn(id);
