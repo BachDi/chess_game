@@ -14,6 +14,7 @@ class ChessPiece {
     + isNotChosen()
     + isEmpty()
     + recommendMoves() 
+    + movePiece()
 }
 class Pawn {
     + recommendMovesForPawn()
