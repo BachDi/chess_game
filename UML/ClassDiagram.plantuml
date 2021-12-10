@@ -40,7 +40,6 @@ class King {
 }
 
 ChessBoard "1" <-- "n" ChessPiece
-ChessBoard <-- Controller
 ChessPiece <|-- Pawn 
 ChessPiece <|-- Rook 
 ChessPiece <|-- Knight 
