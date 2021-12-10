@@ -1,7 +1,7 @@
-function Queen(isWhite, id) {
-  const queenUrl = isWhite ? "asset/queen_white.png" : "asset/queen_black.png"
+function Queen(isWhite, id, key) {
+  const queenUrl = isWhite ? "asset/queen_white.png" : "asset/queen_black.png";
   this.isWhite = isWhite;
-  ChessPiece.call(this, "queen", id, queenUrl);
+  ChessPiece.call(this, "queen", id, queenUrl, key);
   this.recommendMovesForQueen = function (id) {
     let x = this.id.charAt(0);
     let y = parseInt(this.id.charAt(1));
@@ -32,5 +32,5 @@ function Queen(isWhite, id) {
       }
       board.changeSquareColor(left, y);
     }
-  }
+  };
 }

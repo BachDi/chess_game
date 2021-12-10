@@ -1,7 +1,7 @@
-function Pawn(isWhite, id) {
+function Pawn(isWhite, id, key) {
   const pawnUrl = isWhite ? "asset/pawn_white.png" : "asset/pawn_black.png";
   this.isWhite = isWhite;
-  ChessPiece.call(this, "pawn", id, pawnUrl);
+  ChessPiece.call(this, "pawn", id, pawnUrl, key);
   this.recommendMovesForPawn = function (id) {
     let x = this.id.charAt(0);
     let y = parseInt(this.id.charAt(1));
