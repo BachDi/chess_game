@@ -24,6 +24,7 @@ class Knight {
     + recommendMovesForKnight()
 }
 class Rook {
+    + isMoved
     + recommendMovesForRook()
 }
 class Bishop {
