@@ -52,5 +52,37 @@ function Queen(isWhite, id, key) {
       //   this.setPosition(id);
       // });
     }
+    //top right
+    let tempX = x;
+    let tempY = y;
+    while (this.isEmpty(`${column[tempX + 1]}${tempY + 1}`)) {
+      tempX += 1;
+      tempY += 1;
+      board.changeSquareColor(tempX, tempY, this);
+    }
+    //top left
+    tempX = x;
+    tempY = y
+    while (this.isEmpty(`${column[tempX + 1]}${tempY - 1}`)) {
+      tempX += 1;
+      tempY -= 1;
+      board.changeSquareColor(tempX, tempY, this);
+    }
+    //bottom right
+    tempX = x;
+    tempY = y
+    while (this.isEmpty(`${column[tempX - 1]}${tempY + 1}`)) {
+      tempX -= 1;
+      tempY += 1;
+      board.changeSquareColor(tempX, tempY, this);
+    }
+    //bottom left
+    tempX = x;
+    tempY = y
+    while (this.isEmpty(`${column[tempX - 1]}${tempY - 1}`)) {
+      tempX -= 1;
+      tempY -= 1;
+      board.changeSquareColor(tempX, tempY, this);
+    }
   };
 }
