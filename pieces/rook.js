@@ -3,8 +3,8 @@ function Rook(isWhite, id, key) {
   this.isWhite = isWhite;
   ChessPiece.call(this, "rook", id, rookUrl, key);
   this.recommendMoves = function (id) {
-    let x = this.id.charAt(0);
-    let y = parseInt(this.id.charAt(1));
+    let x = id.charAt(0);
+    let y = parseInt(id.charAt(1));
     x = column.findIndex((value) => value === x);
     // console.log(x, y);
     board.resetSquareColor();
@@ -14,10 +14,10 @@ function Rook(isWhite, id, key) {
       }
       board.changeSquareColor(x, top);
       const id = `${column[x]}${top}`;
-      document.getElementById(id).addEventListener("click", () => {
-        this.relocatePiece(id)
-        // this.setPosition(id);
-      });
+      // document.getElementById(id).addEventListener("click", () => {
+      //   this.relocatePiece(id)
+      //   // this.setPosition(id);
+      // });
     }
     for (let bottom = y - 1; bottom > 0; bottom--) {
       if (!this.isEmpty(`${column[x]}${bottom}`)) {
@@ -25,10 +25,10 @@ function Rook(isWhite, id, key) {
       }
       board.changeSquareColor(x, bottom);
       const id = `${column[x]}${bottom}`;
-      document.getElementById(id).addEventListener("click", () => {
-        this.relocatePiece(id)
-        // this.setPosition(id);
-      });
+      // document.getElementById(id).addEventListener("click", () => {
+      //   this.relocatePiece(id)
+      //   // this.setPosition(id);
+      // });
     }
     for (let right = x + 1; right <= 8; right++) {
       if (!this.isEmpty(`${column[right]}${y}`)) {
@@ -36,10 +36,10 @@ function Rook(isWhite, id, key) {
       }
       board.changeSquareColor(right, y);
       const id = `${column[right]}${y}`;
-      document.getElementById(id).addEventListener("click", () => {
-        this.relocatePiece(id)
-        // this.setPosition(id);
-      });
+      // document.getElementById(id).addEventListener("click", () => {
+      //   this.relocatePiece(id)
+      //   // this.setPosition(id);
+      // });
     }
     for (let left = x - 1; left > 0; left--) {
       if (!this.isEmpty(`${column[left]}${y}`)) {
@@ -47,10 +47,10 @@ function Rook(isWhite, id, key) {
       }
       board.changeSquareColor(left, y);
       const id = `${column[left]}${y}`;
-      document.getElementById(id).addEventListener("click", () => {
-        this.relocatePiece(id)
-        // this.setPosition(id);
-      });
+      // document.getElementById(id).addEventListener("click", () => {
+      //   this.relocatePiece(id)
+      //   // this.setPosition(id);
+      // });
     }
   };
 }

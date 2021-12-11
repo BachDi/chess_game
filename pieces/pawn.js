@@ -3,7 +3,7 @@ function Pawn(isWhite, id, key) {
   this.isWhite = isWhite;
   ChessPiece.call(this, "pawn", id, pawnUrl, key);
   this.recommendMoves = function (id) {
-    console.log(id);
+    // console.log(id);
     let x = id.charAt(0);
     let y = parseInt(id.charAt(1));
     x = column.findIndex((value) => value === x);
@@ -14,44 +14,44 @@ function Pawn(isWhite, id, key) {
         for (i = y + 1; i <= y + 2; i++) {
           board.changeSquareColor(x, i);
           const id = `${column[x]}${i}`;
-          document.getElementById(id).addEventListener("click", () => {
-            // board.movePiece(id);
-            // this.setPosition(id);
-            this.relocatePiece(id);
-            board.resetSquareColor();
-          });
+          // document.getElementById(id).addEventListener("click", () => {
+          //   // board.movePiece(id);
+          //   // this.setPosition(id);
+          //   // this.relocatePiece(id);
+          //   // board.resetSquareColor();
+          // });
         }
       } else {
         board.changeSquareColor(x, y + 1); //1
         const id = `${column[x]}${y + 1}`;
-        document.getElementById(id).addEventListener("click", () => {
-          // board.movePiece(id);
-          // this.setPosition(id);
-          this.relocatePiece(id);
-          board.resetSquareColor();
-        });
+        // document.getElementById(id).addEventListener("click", () => {
+        //   // board.movePiece(id);
+        //   // this.setPosition(id);
+        //   this.relocatePiece(id);
+        //   board.resetSquareColor();
+        // });
       }
     } else {
       if (y === 7) {
         for (i = y - 1; i >= y - 2; i--) {
           board.changeSquareColor(x, i);
           const id = `${column[x]}${i}`;
-          document.getElementById(id).addEventListener("click", () => {
-            // board.movePiece(id);
-            // this.setPosition(id);
-            this.relocatePiece(id);
-            board.resetSquareColor();
-          });
+          // document.getElementById(id).addEventListener("click", () => {
+          //   // board.movePiece(id);
+          //   // this.setPosition(id);
+          //   this.relocatePiece(id);
+          //   board.resetSquareColor();
+          // });
         }
       } else {
         board.changeSquareColor(x, y - 1); //2
         const id = `${column[x]}${y - 1}`;
-        document.getElementById(id).addEventListener("click", () => {
-          // board.movePiece(id);
-          // this.setPosition(id);
-          this.relocatePiece(id);
-          board.resetSquareColor();
-        });
+        // document.getElementById(id).addEventListener("click", () => {
+        //   // board.movePiece(id);
+        //   // this.setPosition(id);
+        //   this.relocatePiece(id);
+        //   board.resetSquareColor();
+        // });
       }
     }
   };

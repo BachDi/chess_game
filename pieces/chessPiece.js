@@ -7,10 +7,10 @@ function ChessPiece(name, position, url, key) {
     const square = document.getElementById(this.position);
     square.addEventListener("click", () => {
       if (!this.isEmpty(this.position)) {
-        // this.isChosen(this.position);
+        this.isChosen(this.position);
         this.recommendMoves(this.position);
         // this.setNewPosition(this.position);
-        console.log(this.position);
+        console.log(this);
       }
     });
     // board.defaultPosition(name, position, url, key);
@@ -18,7 +18,6 @@ function ChessPiece(name, position, url, key) {
   this.isChosen = function (position) {
     console.log("chosen");
     setDataToLocal("isMove", false);
-    this.position = position;
     this.isNotChosen();
     document.getElementById(position).classList.add("chosen");
   };
@@ -26,6 +25,15 @@ function ChessPiece(name, position, url, key) {
     const squares = document.querySelectorAll(`.square`);
     squares.forEach((square) => square.classList.remove("chosen"));
     squares.forEach((square) => square.classList.remove("recommend"));
+    const square = document.getElementById(this.position);
+    square.removeEventListener("click", () => {
+      if (!this.isEmpty(this.position)) {
+        this.isChosen(this.position);
+        this.recommendMoves(this.position);
+        // this.setNewPosition(this.position);
+        console.log(this);
+      }
+    });
   };
   this.recommendMoves = function () {};
   this.isEmpty = function (position) {

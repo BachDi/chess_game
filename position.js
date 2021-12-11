@@ -1,4 +1,4 @@
-let positions = getDataFromLocal("positions") || [];
+let positions = [];
 const whiteRook1 = new Rook(true, "a1", "whiteRook1");
 whiteRook1.setPiece();
 positions.push(whiteRook1);
@@ -45,11 +45,11 @@ const whitePawn8 = new Pawn(true, "h2", "whitePawn8");
 whitePawn8.setPiece();
 positions.push(whitePawn8);
 
-const whiteQueen = new Queen(true, "d1");
+const whiteQueen = new Queen(true, "d1", "whiteQueen");
 whiteQueen.setPiece();
 positions.push(whiteQueen);
 
-const whiteKing = new King(true, "e1");
+const whiteKing = new King(true, "e1", "whiteKing");
 whiteKing.setPiece();
 positions.push(whiteKing);
 
@@ -108,7 +108,6 @@ blackKing.setPiece();
 positions.push(blackKing);
 
 setDataToLocal("position", positions);
-
 
 // for (i = 3; i < 7; i++) {
 //     column.forEach((letter, index) => {
