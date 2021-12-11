@@ -60,18 +60,34 @@ function Board() {
   this.defaultPosition = function () {
     const position = getDataFromLocal("position");
     position.forEach((chess) => {
-      const square = document.getElementById(chess.id);
+      const square = document.getElementById(chess.position);
       square.firstChild.src = chess.url;
       square.setAttribute("name", chess.name);
       square.setAttribute("key", chess.key);
-      // square.addEventListener("click", () => {
-      //   if (!this.isEmpty(chess.id)) {
-      //     this.isChosen(chess.id);
-      //     this.recommendMoves(chess.id);
-      //   }
-      // });
+      square.addEventListener("click", () => {
+        if (!this.isEmpty(chess.position)) {
+          this.isChosen(chess.position);
+          // this.recommendMoves(chess.position);
+        }
+      });
     });
   };
+  this.isChosen = function (position) {
+    console.log("chosen");
+    setDataToLocal("isMove", false);
+    this.position = position;
+    this.isNotChosen();
+    document.getElementById(position).classList.add("chosen");
+  };
+  this.isNotChosen = function () {
+    const squares = document.querySelectorAll(`.square`);
+    squares.forEach((square) => square.classList.remove("chosen"));
+    squares.forEach((square) => square.classList.remove("recommend"));
+  };
+  this.isEmpty = function (position) {
+    if (document.getElementById(position).firstChild.src === link) return true;
+  };
+
 }
 
 //jesus

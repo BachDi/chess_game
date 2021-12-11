@@ -1,29 +1,29 @@
-function ChessPiece(name, id, url, key) {
+function ChessPiece(name, position, url, key) {
   this.name = name;
-  this.id = id;
+  this.position = position;
   this.url = url;
   this.key = key;
   // this.setPiece = function () {
-  //   // const square = document.getElementById(this.id);
+  //   // const square = document.getElementById(this.position);
   //   // square.firstChild.src = this.url;
   //   // square.setAttribute("name", this.name);
   //   // square.setAttribute("key", this.key);
   //   // square.addEventListener("click", () => {
-  //   // if (!this.isEmpty(this.id)) {
-  //   //   this.isChosen(this.id);
-  //   //   this.recommendMoves(this.id);
-  //   //   // this.setNewPosition(this.id);
-  //   //   console.log(this.id);
+  //   // if (!this.isEmpty(this.position)) {
+  //   //   this.isChosen(this.position);
+  //   //   this.recommendMoves(this.position);
+  //   //   // this.setNewPosition(this.position);
+  //   //   console.log(this.position);
   //   // }
   //   // });
-  //   // board.defaultPosition(name, id, url, key);
+  //   // board.defaultPosition(name, position, url, key);
   // };
-  this.isChosen = function (id) {
+  this.isChosen = function (position) {
     console.log("chosen");
     setDataToLocal("isMove", false);
-    this.id = id;
+    this.position = position;
     this.isNotChosen();
-    document.getElementById(id).classList.add("chosen");
+    document.getElementById(position).classList.add("chosen");
   };
   this.isNotChosen = function () {
     const squares = document.querySelectorAll(`.square`);
@@ -31,20 +31,20 @@ function ChessPiece(name, id, url, key) {
     squares.forEach((square) => square.classList.remove("recommend"));
   };
   this.recommendMoves = function () {};
-  this.isEmpty = function (id) {
-    if (document.getElementById(id).firstChild.src === link) return true;
+  this.isEmpty = function (position) {
+    if (document.getElementById(position).firstChild.src === link) return true;
   };
 
-  this.setPosition = function (id) {
-    this.id = id;
-    console.log(this.id);
+  this.setPosition = function (position) {
+    this.position = position;
+    console.log(this.position);
     console.log(this);
   };
-  this.relocatePiece = function (id) {
-    const start = document.getElementById(this.id);
-    const end = document.getElementById(id);
-    console.log("start", this.id, start);
-    console.log("end", id, end);
+  this.relocatePiece = function (position) {
+    const start = document.getElementById(this.position);
+    const end = document.getElementById(position);
+    console.log("start", this.position, start);
+    console.log("end", position, end);
     if (end.classList.contains("recommend")) {
       end.firstChild.src = this.url;
       end.setAttribute("name", this.name);
@@ -53,7 +53,7 @@ function ChessPiece(name, id, url, key) {
       start.setAttribute("name", "");
       start.setAttribute("key", "");
       start.classList.remove("chosen");
-      this.id = id;
+      this.position = position;
       console.log(this);
     }
   };
