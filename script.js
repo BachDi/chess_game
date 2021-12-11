@@ -67,7 +67,7 @@ function Board() {
       square.addEventListener("click", () => {
         if (!this.isEmpty(chess.position)) {
           this.isChosen(chess.position);
-          // this.recommendMoves(chess.position);
+          this.showMoves(chess.position);
         }
       });
     });
@@ -86,6 +86,11 @@ function Board() {
   };
   this.isEmpty = function (position) {
     if (document.getElementById(position).firstChild.src === link) return true;
+  };
+  this.showMoves = function (position) {
+    const piece = document.getElementById(position);
+    piece.getAttribute("name");
+    console.log(1)
   };
 
 }
