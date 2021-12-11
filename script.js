@@ -39,17 +39,13 @@ function Board() {
     const squares = document.querySelectorAll(`.square`);
     squares.forEach((square) => {
       square.classList.remove("recommend");
-      // square.removeEventListener("click", () => this.movePiece(`${id}`));
-      // square.removeEventListener("mouseup", () => {
-      //   this.isChosen(this.id);
-      //   this.recommendMoves(this.id);
-      // })
     });
   };
   this.oldId = function () {};
   this.currentId = function () {};
   this.movePiece = function (id) {
     console.log(id);
+    setDataToLocal("isMove", true);
     const square = document.getElementById(id);
     if (square.classList.contains("recommend")) {
       square.firstChild.src = document.querySelector(".chosen img").src;
@@ -60,9 +56,6 @@ function Board() {
       current.classList.remove("chosen");
       this.resetSquareColor();
     }
-  };
-  this.setPosition = function (id) {
-    return id;
   };
 }
 

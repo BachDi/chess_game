@@ -12,12 +12,12 @@ function ChessPiece(name, id, url, key) {
       if (!this.isEmpty(this.id)) {
         this.isChosen(this.id);
         this.recommendMoves(this.id);
+        // this.setNewPosition(this.id);
       }
     });
   };
   this.isChosen = function (id) {
-    // console.log(this.id);
-    // console.log(whitePawn8);
+    setDataToLocal("isMove", false);
     this.id = id;
     this.isNotChosen();
     document.getElementById(id).classList.add("chosen");

@@ -29,9 +29,9 @@ function Pawn(isWhite, id, key) {
         for (i = y - 1; i >= y - 2; i--) {
           board.changeSquareColor(x, i);
           const id = `${column[x]}${i}`;
-          document
-            .getElementById(id)
-            .addEventListener("click", () => board.movePiece(id));
+          document.getElementById(id).addEventListener("click", () => {
+            board.movePiece(id);
+          });
         }
       } else {
         board.changeSquareColor(x, y - 1); //2
