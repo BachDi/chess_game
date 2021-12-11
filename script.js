@@ -34,7 +34,9 @@ function Board() {
     // console.log(id);
     const square = document.getElementById(id);
     square.classList.add("recommend");
+    // console.log(square.firstChild);
     square.addEventListener("click", () => this.movePiece(id, chess));
+    // square.addEventListener("click", () => this.movePiece(id, chess));
   };
 
   this.resetSquareColor = () => {
@@ -49,6 +51,8 @@ function Board() {
     setDataToLocal("isMove", true);
     const moveToSquare = document.getElementById(id);
     const chosenSquare = document.querySelector(".chosen");
+    // console.log(cloneChosenSquare);
+    // chosenSquare.parentNode.replaceChild(cloneChosenSquare, chosenSquare);
     // console.log(chosenSquare);
     const position = getDataFromLocal("position");
     if (moveToSquare.classList.contains("recommend")) {
@@ -60,15 +64,25 @@ function Board() {
       });
       setDataToLocal("position", position);
       board.defaultPosition();
+      const cloneMoveToSquare = moveToSquare.cloneNode(true);
+      moveToSquare.parentNode.replaceChild(cloneMoveToSquare, moveToSquare);
+      const cloneChosenSquare = chosenSquare.cloneNode(true);
+      chosenSquare.parentNode.replaceChild(cloneChosenSquare, chosenSquare);
       moveToSquare.firstChild.src = document.querySelector(".chosen img").src;
       moveToSquare.setAttribute("name", chosenSquare.getAttribute("name"));
-      chosenSquare.setAttribute("name", "");
+      cloneChosenSquare.setAttribute("name", "");
       moveToSquare.setAttribute("key", chosenSquare.getAttribute("key"));
-      chosenSquare.setAttribute("key", "");
-      chosenSquare.firstChild.src = "";
-      chosenSquare.classList.remove("chosen");
+      cloneChosenSquare.setAttribute("key", "");
+      cloneChosenSquare.firstChild.src = "";
+      console.log(chosenSquare);
+      cloneChosenSquare.classList.remove("chosen");
+      // recreateNode(chosenSquare);
       this.resetSquareColor();
     }
+  };
+
+  this.moveEvent = function () {
+    this.movePiece(id, chess);
   };
 
   this.defaultPosition = function () {
