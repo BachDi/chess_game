@@ -12,7 +12,7 @@ function Pawn(isWhite, id, key) {
     if (this.isWhite === true) {
       if (y === 2) {
         for (i = y + 1; i <= y + 2; i++) {
-          board.changeSquareColor(x, i);
+          board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
           // document.getElementById(id).addEventListener("click", () => {
           //   // board.movePiece(id);
@@ -22,7 +22,7 @@ function Pawn(isWhite, id, key) {
           // });
         }
       } else {
-        board.changeSquareColor(x, y + 1); //1
+        board.changeSquareColor(x, y + 1, this); //1
         const id = `${column[x]}${y + 1}`;
         // document.getElementById(id).addEventListener("click", () => {
         //   // board.movePiece(id);
@@ -34,7 +34,7 @@ function Pawn(isWhite, id, key) {
     } else {
       if (y === 7) {
         for (i = y - 1; i >= y - 2; i--) {
-          board.changeSquareColor(x, i);
+          board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
           // document.getElementById(id).addEventListener("click", () => {
           //   // board.movePiece(id);
@@ -44,7 +44,7 @@ function Pawn(isWhite, id, key) {
           // });
         }
       } else {
-        board.changeSquareColor(x, y - 1); //2
+        board.changeSquareColor(x, y - 1, this); //2
         const id = `${column[x]}${y - 1}`;
         // document.getElementById(id).addEventListener("click", () => {
         //   // board.movePiece(id);

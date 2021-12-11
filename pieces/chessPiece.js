@@ -10,7 +10,7 @@ function ChessPiece(name, position, url, key) {
         this.isChosen(this.position);
         this.recommendMoves(this.position);
         // this.setNewPosition(this.position);
-        console.log(this);
+        console.log("khi click", this);
       }
     });
     // board.defaultPosition(name, position, url, key);
@@ -26,14 +26,14 @@ function ChessPiece(name, position, url, key) {
     squares.forEach((square) => square.classList.remove("chosen"));
     squares.forEach((square) => square.classList.remove("recommend"));
     const square = document.getElementById(this.position);
-    square.removeEventListener("click", () => {
-      if (!this.isEmpty(this.position)) {
-        this.isChosen(this.position);
-        this.recommendMoves(this.position);
-        // this.setNewPosition(this.position);
-        console.log(this);
-      }
-    });
+    // square.removeEventListener("click", () => {
+    //   if (!this.isEmpty(this.position)) {
+    //     this.isChosen(this.position);
+    //     this.recommendMoves(this.position);
+    //     // this.setNewPosition(this.position);
+    //     console.log(this);
+    //   }
+    // });
   };
   this.recommendMoves = function () {};
   this.isEmpty = function (position) {

@@ -11,6 +11,7 @@ function Board() {
       this.addSquareToRow(rowId);
     }
   };
+
   this.addSquareToRow = function (rowId) {
     this.rowId = document.getElementById(`${rowId}`);
     for (let columnId = 0; columnId <= 8; columnId++) {
@@ -27,36 +28,38 @@ function Board() {
           : this.square.classList.add("white"));
     }
   };
-  this.changeSquareColor = function (x, y) {
+
+  this.changeSquareColor = function (x, y, chess) {
     const id = `${column[x]}${y}`;
     // console.log(id);
     const square = document.getElementById(id);
     square.classList.add("recommend");
-    square.addEventListener("click", () => this.movePiece(id));
+    square.addEventListener("click", () => this.movePiece(id, chess));
   };
+
   this.resetSquareColor = () => {
     const squares = document.querySelectorAll(`.square`);
     squares.forEach((square) => {
       square.classList.remove("recommend");
     });
   };
-  this.oldId = function () {};
-  this.currentId = function () {};
-  this.movePiece = function (id) {
+
+  this.movePiece = function (id, chess) {
     console.log(id);
     setDataToLocal("isMove", true);
     const moveToSquare = document.getElementById(id);
     const chosenSquare = document.querySelector(".chosen");
-    console.log(chosenSquare);
+    // console.log(chosenSquare);
     const position = getDataFromLocal("position");
-    position.forEach((chess) => {
-      if (chess.key === chosenSquare.getAttribute("key")) {
-        chess.position = id;
-      }
-    });
-    setDataToLocal("position", position);
-    board.defaultPosition();
     if (moveToSquare.classList.contains("recommend")) {
+      chess.position = id;
+      position.forEach((chess) => {
+        if (chess.key === chosenSquare.getAttribute("key")) {
+          chess.position = id;
+        }
+      });
+      setDataToLocal("position", position);
+      board.defaultPosition();
       moveToSquare.firstChild.src = document.querySelector(".chosen img").src;
       moveToSquare.setAttribute("name", chosenSquare.getAttribute("name"));
       chosenSquare.setAttribute("name", "");
