@@ -57,20 +57,24 @@ function Board() {
   //   }
   // };
 
-  this.defaultPosition = function (name, id, url, key) {
-    const square = document.getElementById(id);
-    square.firstChild.src = url;
-    square.setAttribute("name", name);
-    square.setAttribute("key", key);
-    // square.addEventListener("click", () => {
-    //   if (!this.isEmpty(id)) {
-    //     this.isChosen(id);
-    //     this.recommendMoves(id);
-    //   }
-    // });
+  this.defaultPosition = function () {
+    const position = getDataFromLocal("position");
+    position.forEach((chess) => {
+      const square = document.getElementById(chess.id);
+      square.firstChild.src = chess.url;
+      square.setAttribute("name", chess.name);
+      square.setAttribute("key", chess.key);
+      // square.addEventListener("click", () => {
+      //   if (!this.isEmpty(chess.id)) {
+      //     this.isChosen(chess.id);
+      //     this.recommendMoves(chess.id);
+      //   }
+      // });
+    });
   };
 }
 
 //jesus
 const board = new Board();
 board.create();
+board.defaultPosition();

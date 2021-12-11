@@ -3,23 +3,23 @@ function ChessPiece(name, id, url, key) {
   this.id = id;
   this.url = url;
   this.key = key;
-  this.setPiece = function () {
-    // const square = document.getElementById(this.id);
-    // square.firstChild.src = this.url;
-    // square.setAttribute("name", this.name);
-    // square.setAttribute("key", this.key);
-    // square.addEventListener("click", () => {
-    //   if (!this.isEmpty(this.id)) {
-    //     this.isChosen(this.id);
-    //     this.recommendMoves(this.id);
-    //     // this.setNewPosition(this.id);
-    //     console.log(this.id)
-    //   }
-    // });
-    board.defaultPosition(name, id, url, key);
-  };
+  // this.setPiece = function () {
+  //   // const square = document.getElementById(this.id);
+  //   // square.firstChild.src = this.url;
+  //   // square.setAttribute("name", this.name);
+  //   // square.setAttribute("key", this.key);
+  //   // square.addEventListener("click", () => {
+  //   // if (!this.isEmpty(this.id)) {
+  //   //   this.isChosen(this.id);
+  //   //   this.recommendMoves(this.id);
+  //   //   // this.setNewPosition(this.id);
+  //   //   console.log(this.id);
+  //   // }
+  //   // });
+  //   // board.defaultPosition(name, id, url, key);
+  // };
   this.isChosen = function (id) {
-    console.log(this);
+    console.log("chosen");
     setDataToLocal("isMove", false);
     this.id = id;
     this.isNotChosen();
