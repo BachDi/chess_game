@@ -5,6 +5,7 @@ function Queen(isWhite, id, key) {
   this.recommendMoves = function (id) {
     let x = id.charAt(0);
     let y = parseInt(id.charAt(1));
+    let recommend = [];
     x = column.findIndex((value) => value === x);
     // console.log(x, y);
     board.resetSquareColor();

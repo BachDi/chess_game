@@ -34,21 +34,4 @@ function ChessPiece(name, position, url, key) {
     console.log(this.position);
     console.log(this);
   };
-  this.relocatePiece = function (position) {
-    const start = document.getElementById(this.position);
-    const end = document.getElementById(position);
-    console.log("start", this.position, start);
-    console.log("end", position, end);
-    if (end.classList.contains("recommend")) {
-      end.firstChild.src = this.url;
-      end.setAttribute("name", this.name);
-      end.setAttribute("key", this.key);
-      start.firstChild.src = "";
-      start.setAttribute("name", "");
-      start.setAttribute("key", "");
-      start.classList.remove("chosen");
-      this.position = position;
-      console.log(this);
-    }
-  };
 }
