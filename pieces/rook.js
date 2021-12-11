@@ -2,7 +2,7 @@ function Rook(isWhite, id, key) {
   const rookUrl = isWhite ? "asset/rook_white.png" : "asset/rook_black.png";
   this.isWhite = isWhite;
   ChessPiece.call(this, "rook", id, rookUrl, key);
-  this.recommendMovesForRook = function (id) {
+  this.recommendMoves = function (id) {
     let x = this.id.charAt(0);
     let y = parseInt(this.id.charAt(1));
     x = column.findIndex((value) => value === x);
@@ -15,8 +15,8 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(x, top);
       const id = `${column[x]}${top}`;
       document.getElementById(id).addEventListener("click", () => {
-        board.movePiece(id);
-        this.setPosition(id);
+        this.relocatePiece(id)
+        // this.setPosition(id);
       });
     }
     for (let bottom = y - 1; bottom > 0; bottom--) {
@@ -26,8 +26,8 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(x, bottom);
       const id = `${column[x]}${bottom}`;
       document.getElementById(id).addEventListener("click", () => {
-        board.movePiece(id);
-        this.setPosition(id);
+        this.relocatePiece(id)
+        // this.setPosition(id);
       });
     }
     for (let right = x + 1; right <= 8; right++) {
@@ -37,8 +37,8 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(right, y);
       const id = `${column[right]}${y}`;
       document.getElementById(id).addEventListener("click", () => {
-        board.movePiece(id);
-        this.setPosition(id);
+        this.relocatePiece(id)
+        // this.setPosition(id);
       });
     }
     for (let left = x - 1; left > 0; left--) {
@@ -48,8 +48,8 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(left, y);
       const id = `${column[left]}${y}`;
       document.getElementById(id).addEventListener("click", () => {
-        board.movePiece(id);
-        this.setPosition(id);
+        this.relocatePiece(id)
+        // this.setPosition(id);
       });
     }
   };

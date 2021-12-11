@@ -42,20 +42,20 @@ function Board() {
   };
   this.oldId = function () {};
   this.currentId = function () {};
-  this.movePiece = function (id) {
-    console.log(id);
-    setDataToLocal("isMove", true);
-    const square = document.getElementById(id);
-    if (square.classList.contains("recommend")) {
-      square.firstChild.src = document.querySelector(".chosen img").src;
-      const current = document.querySelector(".chosen");
-      square.setAttribute("name", current.getAttribute("name"));
-      current.setAttribute("name", "");
-      current.firstChild.src = "";
-      current.classList.remove("chosen");
-      this.resetSquareColor();
-    }
-  };
+  // this.movePiece = function (id) {
+  //   console.log(id);
+  //   setDataToLocal("isMove", true);
+  //   const square = document.getElementById(id);
+  //   if (square.classList.contains("recommend")) {
+  //     square.firstChild.src = document.querySelector(".chosen img").src;
+  //     const current = document.querySelector(".chosen");
+  //     square.setAttribute("name", current.getAttribute("name"));
+  //     current.setAttribute("name", "");
+  //     current.firstChild.src = "";
+  //     current.classList.remove("chosen");
+  //     this.resetSquareColor();
+  //   }
+  // };
 }
 
 //jesus
