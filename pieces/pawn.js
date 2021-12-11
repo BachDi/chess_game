@@ -3,7 +3,6 @@ function Pawn(isWhite, id, key) {
   this.isWhite = isWhite;
   ChessPiece.call(this, "pawn", id, pawnUrl, key);
   this.recommendMoves = function (id) {
-    // console.log(id);
     let x = id.charAt(0);
     let y = parseInt(id.charAt(1));
     x = column.findIndex((value) => value === x);
@@ -16,23 +15,11 @@ function Pawn(isWhite, id, key) {
           board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
           recommend.push(id);
-          // document.getElementById(id).addEventListener("click", () => {
-          //   // board.movePiece(id);
-          //   // this.setPosition(id);
-          //   // this.relocatePiece(id);
-          //   // board.resetSquareColor();
-          // });
         }
       } else {
         board.changeSquareColor(x, y + 1, this); //1
         const id = `${column[x]}${y + 1}`;
         recommend.push(id);
-        // document.getElementById(id).addEventListener("click", () => {
-        //   // board.movePiece(id);
-        //   // this.setPosition(id);
-        //   this.relocatePiece(id);
-        //   board.resetSquareColor();
-        // });
       }
     } else {
       if (y === 7) {
@@ -40,23 +27,11 @@ function Pawn(isWhite, id, key) {
           board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
           recommend.push(id);
-          // document.getElementById(id).addEventListener("click", () => {
-          //   // board.movePiece(id);
-          //   // this.setPosition(id);
-          //   this.relocatePiece(id);
-          //   board.resetSquareColor();
-          // });
         }
       } else {
         board.changeSquareColor(x, y - 1, this); //2
         const id = `${column[x]}${y - 1}`;
         recommend.push(id);
-        // document.getElementById(id).addEventListener("click", () => {
-        //   // board.movePiece(id);
-        //   // this.setPosition(id);
-        //   this.relocatePiece(id);
-        //   board.resetSquareColor();
-        // });
       }
     }
     setDataToLocal("recommend", recommend);

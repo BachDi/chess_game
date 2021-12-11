@@ -109,12 +109,3 @@ positions.push(blackKing);
 
 setDataToLocal("position", positions);
 
-// for (i = 3; i < 7; i++) {
-//     column.forEach((letter, index) => {
-//         if (letter !== "") {
-//             let cell = `${letter}${i}`;
-//             const emptySquare = new Empty(false, cell);
-//             emptySquare.setPiece();
-//         }
-//     });
-// }

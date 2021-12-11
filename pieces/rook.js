@@ -16,10 +16,6 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(x, top, this);
       const id = `${column[x]}${top}`;
       recommend.push(id);
-      // document.getElementById(id).addEventListener("click", () => {
-      //   this.relocatePiece(id)
-      //   // this.setPosition(id);
-      // });
     }
     for (let bottom = y - 1; bottom > 0; bottom--) {
       if (!this.isEmpty(`${column[x]}${bottom}`)) {
@@ -28,10 +24,6 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(x, bottom, this);
       const id = `${column[x]}${bottom}`;
       recommend.push(id);
-      // document.getElementById(id).addEventListener("click", () => {
-      //   this.relocatePiece(id)
-      //   // this.setPosition(id);
-      // });
     }
     for (let right = x + 1; right <= 8; right++) {
       if (!this.isEmpty(`${column[right]}${y}`)) {
@@ -40,10 +32,6 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(right, y, this);
       const id = `${column[right]}${y}`;
       recommend.push(id);
-      // document.getElementById(id).addEventListener("click", () => {
-      //   this.relocatePiece(id)
-      //   // this.setPosition(id);
-      // });
     }
     for (let left = x - 1; left > 0; left--) {
       if (!this.isEmpty(`${column[left]}${y}`)) {
@@ -52,10 +40,6 @@ function Rook(isWhite, id, key) {
       board.changeSquareColor(left, y, this);
       const id = `${column[left]}${y}`;
       recommend.push(id);
-      // document.getElementById(id).addEventListener("click", () => {
-      //   this.relocatePiece(id)
-      //   // this.setPosition(id);
-      // });
     }
     setDataToLocal("recommend", recommend);
   };
