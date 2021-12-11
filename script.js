@@ -56,6 +56,19 @@ function Board() {
   //     this.resetSquareColor();
   //   }
   // };
+
+  this.defaultPosition = function (name, id, url, key) {
+    const square = document.getElementById(id);
+    square.firstChild.src = url;
+    square.setAttribute("name", name);
+    square.setAttribute("key", key);
+    // square.addEventListener("click", () => {
+    //   if (!this.isEmpty(id)) {
+    //     this.isChosen(id);
+    //     this.recommendMoves(id);
+    //   }
+    // });
+  };
 }
 
 //jesus
