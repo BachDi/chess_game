@@ -45,4 +45,10 @@ function ChessPiece(name, id, url, key) {
   this.isEmpty = function (id) {
     if (document.getElementById(id).firstChild.src === link) return true;
   };
+
+  this.setPosition = function (id) {
+    this.id = id;
+    console.log(this.id);
+    console.log(this);
+  };
 }

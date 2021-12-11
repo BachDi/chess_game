@@ -13,16 +13,18 @@ function Pawn(isWhite, id, key) {
         for (i = y + 1; i <= y + 2; i++) {
           board.changeSquareColor(x, i);
           const id = `${column[x]}${i}`;
-          document
-            .getElementById(id)
-            .addEventListener("click", () => board.movePiece(id));
+          document.getElementById(id).addEventListener("click", () => {
+            board.movePiece(id);
+            this.setPosition(id);
+          });
         }
       } else {
         board.changeSquareColor(x, y + 1); //1
-        const id = `${column[x]}${y+1}`;
-          document
-            .getElementById(id)
-            .addEventListener("click", () => board.movePiece(id));
+        const id = `${column[x]}${y + 1}`;
+        document.getElementById(id).addEventListener("click", () => {
+          board.movePiece(id);
+          this.setPosition(id);
+        });
       }
     } else {
       if (y === 7) {
@@ -31,14 +33,16 @@ function Pawn(isWhite, id, key) {
           const id = `${column[x]}${i}`;
           document.getElementById(id).addEventListener("click", () => {
             board.movePiece(id);
+            this.setPosition(id);
           });
         }
       } else {
         board.changeSquareColor(x, y - 1); //2
-        const id = `${column[x]}${y-1}`;
-          document
-            .getElementById(id)
-            .addEventListener("click", () => board.movePiece(id));
+        const id = `${column[x]}${y - 1}`;
+        document.getElementById(id).addEventListener("click", () => {
+          board.movePiece(id);
+          this.setPosition(id);
+        });
       }
     }
   };

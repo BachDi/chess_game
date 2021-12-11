@@ -1,5 +1,4 @@
-const column = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-
+const column = ["", "a", "b", "c", "d", "e", "f", "g", "h"];
 const link = window.location.href;
 function Board() {
   this.layout = document.getElementById("chessboard");
