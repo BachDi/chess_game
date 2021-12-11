@@ -90,7 +90,6 @@ function Board() {
   this.showMoves = function (position) {
     const piece = document.getElementById(position);
     piece.getAttribute("name");
-    console.log(1)
   };
 
 }

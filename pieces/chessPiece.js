@@ -3,21 +3,18 @@ function ChessPiece(name, position, url, key) {
   this.position = position;
   this.url = url;
   this.key = key;
-  // this.setPiece = function () {
-  //   // const square = document.getElementById(this.position);
-  //   // square.firstChild.src = this.url;
-  //   // square.setAttribute("name", this.name);
-  //   // square.setAttribute("key", this.key);
-  //   // square.addEventListener("click", () => {
-  //   // if (!this.isEmpty(this.position)) {
-  //   //   this.isChosen(this.position);
-  //   //   this.recommendMoves(this.position);
-  //   //   // this.setNewPosition(this.position);
-  //   //   console.log(this.position);
-  //   // }
-  //   // });
-  //   // board.defaultPosition(name, position, url, key);
-  // };
+  this.setPiece = function () {
+    const square = document.getElementById(this.position);
+    square.addEventListener("click", () => {
+      if (!this.isEmpty(this.position)) {
+        // this.isChosen(this.position);
+        this.recommendMoves(this.position);
+        // this.setNewPosition(this.position);
+        console.log(this.position);
+      }
+    });
+    // board.defaultPosition(name, position, url, key);
+  };
   this.isChosen = function (position) {
     console.log("chosen");
     setDataToLocal("isMove", false);
