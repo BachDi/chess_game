@@ -78,11 +78,17 @@ function Board() {
       cloneChosenSquare.classList.remove("chosen");
       // recreateNode(chosenSquare);
       this.resetSquareColor();
+      this.removeEvent();
     }
   };
 
-  this.moveEvent = function () {
-    this.movePiece(id, chess);
+  this.removeEvent = function () {
+    const recommend = getDataFromLocal("recommend");
+    recommend.forEach((id) => {
+      const oldEl = document.getElementById(id);
+      const newEl = oldEl.cloneNode(true);
+      oldEl.parentNode.replaceChild(newEl, oldEl);
+    });
   };
 
   this.defaultPosition = function () {

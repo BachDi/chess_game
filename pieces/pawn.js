@@ -8,12 +8,14 @@ function Pawn(isWhite, id, key) {
     let y = parseInt(id.charAt(1));
     x = column.findIndex((value) => value === x);
     // console.log(x, y);
+    let recommend = [];
     board.resetSquareColor();
     if (this.isWhite === true) {
       if (y === 2) {
         for (i = y + 1; i <= y + 2; i++) {
           board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
+          recommend.push(id);
           // document.getElementById(id).addEventListener("click", () => {
           //   // board.movePiece(id);
           //   // this.setPosition(id);
@@ -24,6 +26,7 @@ function Pawn(isWhite, id, key) {
       } else {
         board.changeSquareColor(x, y + 1, this); //1
         const id = `${column[x]}${y + 1}`;
+        recommend.push(id);
         // document.getElementById(id).addEventListener("click", () => {
         //   // board.movePiece(id);
         //   // this.setPosition(id);
@@ -36,6 +39,7 @@ function Pawn(isWhite, id, key) {
         for (i = y - 1; i >= y - 2; i--) {
           board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
+          recommend.push(id);
           // document.getElementById(id).addEventListener("click", () => {
           //   // board.movePiece(id);
           //   // this.setPosition(id);
@@ -46,6 +50,7 @@ function Pawn(isWhite, id, key) {
       } else {
         board.changeSquareColor(x, y - 1, this); //2
         const id = `${column[x]}${y - 1}`;
+        recommend.push(id);
         // document.getElementById(id).addEventListener("click", () => {
         //   // board.movePiece(id);
         //   // this.setPosition(id);
@@ -54,6 +59,7 @@ function Pawn(isWhite, id, key) {
         // });
       }
     }
+    setDataToLocal("recommend", recommend);
   };
   this.oldId = function () {};
   this.currentId = function () {};
