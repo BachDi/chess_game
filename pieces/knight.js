@@ -26,10 +26,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
         console.log("1");
       }
@@ -49,10 +49,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
         console.log("2");
       }
@@ -73,10 +73,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
         console.log("3");
       }
@@ -96,10 +96,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
       }
     }
@@ -119,10 +119,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
         console.log("8");
       }
@@ -142,10 +142,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
         console.log("5");
       }
@@ -166,10 +166,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
         console.log("6");
       }
@@ -189,10 +189,10 @@ function Knight(isWhite, id, key){
       !this.isEmpty(`${column[tempX]}${tempY}`)
     ) {
       const id = `${column[tempX]}${tempY}`;
-      const squareKey = document.getElementById(id).getAttribute("key")
-      const squareColor = squareKey.slice(0,5) === "white"
+      const squareKey = document.getElementById(id).getAttribute("key");
+      const squareColor = squareKey.slice(0, 5) === "white";
       if (this.isWhite !== squareColor) {
-        board.changeColorKill(tempX, tempY, this);
+        board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
         console.log("7");
       }

@@ -45,13 +45,13 @@ function Board() {
       this.movePiece(id, chess);
     });
   };
-  this.changeColorKill = function (x, y, chess) {
+  this.changeColorKill = function (x, y, chess, key) {
     const id = `${column[x]}${y}`;
-    console.log("kill", id);
+    console.log("can kill", id);
     const square = document.getElementById(id);
     square.classList.add("kill");
     square.addEventListener("click", () => {
-      this.killChess(chess, ""); // '' là con cờ bị kill
+      this.killChess(id, chess, key); // '' là con cờ bị kill
     });
   };
 
@@ -134,12 +134,11 @@ function Board() {
     }
   };
 
-  this.killChess = function (chessKill, chessIsKilled) {
+  this.killChess = function (id, chessKill, key) {
     setDataToLocal("isWhite", chessKill.isWhite);
-    const id = chessIsKilled.position;
     const position = getDataFromLocal("position");
     position.forEach((chess) => {
-      if (chess.key === chessIsKilled.key) {
+      if (chess.key === key) {
         chess.position = "0";
       }
       if (chess.key === chessKill.key) {
@@ -147,7 +146,6 @@ function Board() {
       }
     });
     setDataToLocal("position", position);
-    chessIsKilled.position = "0";
     chessKill.position = id;
     board.renderPosition();
 
