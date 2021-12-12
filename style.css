@@ -1,6 +1,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  user-select: none;
 }
 .chessboard {
   width: fit-content;
@@ -51,4 +52,7 @@ body {
 }
 .square.white.kill {
   background: hotpink;
+}
+.no-click {
+  pointer-events: none;
 }
