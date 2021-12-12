@@ -132,39 +132,38 @@ function Board() {
     console.log("kill");
     setDataToLocal("isWhite", chessKill.isWhite);
     const position = getDataFromLocal("position");
+    const isKilledSquare = document.getElementById(id);
     const chosenSquare = document.querySelector(".chosen");
-    const cloneChosenSquare = chosenSquare.cloneNode(true);
-    chosenSquare.parentNode.replaceChild(cloneChosenSquare, chosenSquare);
-    const killSquare = document.getElementById(id);
-    const cloneKillSquare = killSquare.cloneNode(true);
-    killSquare.parentNode.replaceChild(cloneKillSquare, killSquare);
+    const cloneIsKillSquare = isKilledSquare.cloneNode(true);
+    if (isKilledSquare.classList.contains("kill")) {
+      isKilledSquare.parentNode.replaceChild(cloneIsKillSquare, isKilledSquare);
+      const cloneChosenSquare = chosenSquare.cloneNode(true);
+      chosenSquare.parentNode.replaceChild(cloneChosenSquare, chosenSquare);
+      position.forEach((chess) => {
+        if (chess.key === key) {
+          chess.position = "0";
+        }
+        if (chess.key === chessKill.key) {
+          chess.position = id;
+        }
+      });
+      isKilledSquare.firstChild.src = document.querySelector(".chosen img").src;
+      isKilledSquare.setAttribute("name", chosenSquare.getAttribute("name"));
+      isKilledSquare.setAttribute("key", chosenSquare.getAttribute("key"));
+      console.log(isKilledSquare);
+      cloneChosenSquare.setAttribute("name", "");
+      cloneChosenSquare.setAttribute("key", "");
+      cloneChosenSquare.firstChild.src = "";
 
-    position.forEach((chess) => {
-      if (chess.key === key) {
-        chess.position = "0";
-      }
-      if (chess.key === chessKill.key) {
-        chess.position = id;
-      }
-    });
-    setDataToLocal("position", position);
-    chessKill.position = id;
-    board.renderPosition();
-
-    console.log(chosenSquare);
-
-    killSquare.firstChild.src = document.querySelector(".chosen img").src;
-    killSquare.setAttribute("name", chosenSquare.getAttribute("name"));
-    killSquare.setAttribute("key", chosenSquare.getAttribute("key"));
-    cloneChosenSquare.setAttribute("name", "");
-    cloneChosenSquare.setAttribute("key", "");
-    cloneChosenSquare.firstChild.src = "";
-
-    chessKill.setPiece();
-    cloneChosenSquare.classList.remove("chosen");
-    this.resetSquareColor();
-    this.removeEventKill();
-    this.removeEventMove();
+      setDataToLocal("position", position);
+      chessKill.position = id;
+      board.renderPosition();
+      chessKill.setPiece();
+      cloneChosenSquare.classList.remove("chosen");
+      this.resetSquareColor();
+      this.removeEventKill();
+      this.removeEventMove();
+    }
   };
 
   this.addEvenChosen = function () {
