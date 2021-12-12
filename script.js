@@ -106,3 +106,4 @@ function Board() {
 const board = new Board();
 board.create();
 board.defaultPosition();
+setDataToLocal("isWhite", "");

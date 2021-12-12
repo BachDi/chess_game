@@ -6,16 +6,18 @@ function ChessPiece(name, position, url, key) {
   this.setPiece = function () {
     const square = document.getElementById(this.position);
     square.addEventListener("click", () => {
-      if (!this.isEmpty(this.position)) {
+      if (
+        !this.isEmpty(this.position) &&
+        getDataFromLocal("isWhite") !== this.isWhite
+      ) {
         this.isChosen(this.position);
         this.recommendMoves(this.position);
-        console.log("khi click", this);
       }
     });
   };
   this.isChosen = function (position) {
-    console.log("chosen");
     setDataToLocal("isMove", false);
+    setDataToLocal("isWhite", this.isWhite);
     this.isNotChosen();
     document.getElementById(position).classList.add("chosen");
   };
