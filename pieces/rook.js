@@ -12,6 +12,13 @@ function Rook(isWhite, id, key) {
     board.resetSquareColor();
     for (let top = y + 1; top <= 8; top++) {
       if (!this.isEmpty(`${column[x]}${top}`)) {
+        const id = `${column[x]}${top}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(x, top, this, squareKey);
+          kill.push(id);
+        }
         break;
       }
       board.changeColorRecommend(x, top, this);
@@ -20,6 +27,13 @@ function Rook(isWhite, id, key) {
     }
     for (let bottom = y - 1; bottom > 0; bottom--) {
       if (!this.isEmpty(`${column[x]}${bottom}`)) {
+        const id = `${column[x]}${bottom}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(x, bottom, this, squareKey);
+          kill.push(id);
+        }
         break;
       }
       board.changeColorRecommend(x, bottom, this);
@@ -28,6 +42,13 @@ function Rook(isWhite, id, key) {
     }
     for (let right = x + 1; right <= 8; right++) {
       if (!this.isEmpty(`${column[right]}${y}`)) {
+        const id = `${column[right]}${y}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(right, y, this, squareKey);
+          kill.push(id);
+        }
         break;
       }
       board.changeColorRecommend(right, y, this);
@@ -36,6 +57,13 @@ function Rook(isWhite, id, key) {
     }
     for (let left = x - 1; left > 0; left--) {
       if (!this.isEmpty(`${column[left]}${y}`)) {
+        const id = `${column[left]}${y}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(left, y, this, squareKey);
+          kill.push(id);
+        }
         break;
       }
       board.changeColorRecommend(left, y, this);
