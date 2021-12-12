@@ -15,7 +15,7 @@ function Bishop(isWhite, id, key) {
     //top right
     let tempX = x;
     let tempY = y;
-    while (this.isEmpty(`${column[tempX + 1]}${tempY + 1}`)) {
+    while (!board.isOutside(tempX + 1, tempY + 1) && this.isEmpty(`${column[tempX + 1]}${tempY + 1}`)) {
       tempX += 1;
       tempY += 1;
       board.changeSquareColor(tempX, tempY, this);
@@ -25,7 +25,7 @@ function Bishop(isWhite, id, key) {
     //top left
     tempX = x;
     tempY = y;
-    while (this.isEmpty(`${column[tempX + 1]}${tempY - 1}`)) {
+    while (!board.isOutside(tempX + 1, tempY - 1) && this.isEmpty(`${column[tempX + 1]}${tempY - 1}`)) {
       tempX += 1;
       tempY -= 1;
       board.changeSquareColor(tempX, tempY, this);
@@ -35,7 +35,7 @@ function Bishop(isWhite, id, key) {
     //bottom right
     tempX = x;
     tempY = y;
-    while (this.isEmpty(`${column[tempX - 1]}${tempY + 1}`)) {
+    while (!board.isOutside(tempX - 1, tempY + 1) && this.isEmpty(`${column[tempX - 1]}${tempY + 1}`)) {
       tempX -= 1;
       tempY += 1;
       board.changeSquareColor(tempX, tempY, this);
@@ -45,7 +45,7 @@ function Bishop(isWhite, id, key) {
     //bottom left
     tempX = x;
     tempY = y;
-    while (this.isEmpty(`${column[tempX - 1]}${tempY - 1}`)) {
+    while (!board.isOutside(tempX - 1, tempY - 1) && this.isEmpty(`${column[tempX - 1]}${tempY - 1}`)) {
       tempX -= 1;
       tempY -= 1;
       board.changeSquareColor(tempX, tempY, this);

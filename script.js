@@ -92,10 +92,14 @@ function Board() {
       square.setAttribute("key", chess.key);
     });
   };
-  this.showMoves = function (position) {
-    const piece = document.getElementById(position);
-    piece.getAttribute("name");
-  };
+
+  this.isOutside = function (x , y) {
+    if (x > 8 || x < 1 || y > 8 || y < 1) {
+      return true;
+    } else {
+      return false
+    }
+  }
 }
 
 //jesus

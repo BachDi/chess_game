@@ -45,7 +45,7 @@ const whitePawn8 = new Pawn(true, "h2", "whitePawn8");
 whitePawn8.setPiece();
 positions.push(whitePawn8);
 
-const whiteQueen = new Queen(true, "d1", "whiteQueen");
+const whiteQueen = new Queen(true, "e4", "whiteQueen");
 whiteQueen.setPiece();
 positions.push(whiteQueen);
 
