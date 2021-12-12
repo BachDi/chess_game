@@ -105,7 +105,7 @@ function Board() {
       const oldEl = document.getElementById(id);
       const newEl = oldEl.cloneNode(true);
       oldEl.parentNode.replaceChild(newEl, oldEl);
-      this.addEvenChosen();
+      board.addEvenChosen();
     });
   };
 
