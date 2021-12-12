@@ -12,6 +12,7 @@ function ChessPiece(name, position, url, key) {
       ) {
         this.isChosen(this.position);
         this.recommendMoves(this.position);
+        this.inSight(this.position);
       }
     });
   };
@@ -25,6 +26,7 @@ function ChessPiece(name, position, url, key) {
     squares.forEach((square) => square.classList.remove("recommend"));
   };
   this.recommendMoves = function () {};
+  this.inSight = function () {};
   this.isEmpty = function (position) {
     const imgLink = document.getElementById(position).firstChild.src;
     return imgLink === link;
