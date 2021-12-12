@@ -12,26 +12,36 @@ function Pawn(isWhite, id, key) {
     if (this.isWhite === true) {
       if (y === 2) {
         for (i = y + 1; i <= y + 2; i++) {
+          if (!this.isEmpty(`${column[x]}${i}`)) {
+            break;
+          }
           board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
           recommend.push(id);
         }
       } else {
-        board.changeSquareColor(x, y + 1, this);
-        const id = `${column[x]}${y + 1}`;
-        recommend.push(id);
+        if (this.isEmpty(`${column[x]}${y + 1}`)) {
+          board.changeSquareColor(x, y + 1, this);
+          const id = `${column[x]}${y + 1}`;
+          recommend.push(id);
+        }
       }
     } else {
       if (y === 7) {
         for (i = y - 1; i >= y - 2; i--) {
+          if (!this.isEmpty(`${column[x]}${i}`)) {
+            break;
+          }
           board.changeSquareColor(x, i, this);
           const id = `${column[x]}${i}`;
           recommend.push(id);
         }
       } else {
-        board.changeSquareColor(x, y - 1, this);
-        const id = `${column[x]}${y - 1}`;
-        recommend.push(id);
+        if (this.isEmpty(`${column[x]}${y - 1}`)) {
+          board.changeSquareColor(x, y - 1, this);
+          const id = `${column[x]}${y - 1}`;
+          recommend.push(id);
+        }
       }
     }
     setDataToLocal("recommend", recommend);
