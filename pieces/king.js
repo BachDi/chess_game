@@ -12,83 +12,139 @@ function King(isWhite, id, key){
     board.resetSquareColor();
     let tempX = x + 1;
     let tempY = y;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     tempX = x + 1;
     tempY = y + 1;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     tempX = x;
     tempY = y + 1;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     tempX = x - 1;
     tempY = y;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     tempX = x - 1;
     tempY = y - 1;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     tempX = x;
     tempY = y - 1;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     tempX = x + 1;
     tempY = y - 1;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     tempX = x - 1;
     tempY = y + 1;
-    if (
-      !board.isOutside(tempX, tempY) &&
-      this.isEmpty(`${column[tempX]}${tempY}`)
-    ) {
-      board.changeColorRecommend(tempX, tempY, this);
-      const id = `${column[tempX]}${tempY}`;
-      recommend.push(id);
+    if (!board.isOutside(tempX, tempY)) {
+      if (this.isEmpty(`${column[tempX]}${tempY}`)) {
+        board.changeColorRecommend(tempX, tempY, this);
+        const id = `${column[tempX]}${tempY}`;
+        recommend.push(id);
+      } else {
+        const id = `${column[tempX]}${tempY}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX, tempY, this, squareKey);
+          kill.push(id);
+        }
+      }
     }
     setDataToLocal("recommend", recommend);
     setDataToLocal("kill", kill);
