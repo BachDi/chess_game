@@ -37,21 +37,14 @@ function Board() {
       this.movePiece(id, chess);
     });
   };
-  this.changeColorRecommend = function (x, y, chess) {
-    const id = `${column[x]}${y}`;
-    const square = document.getElementById(id);
-    square.classList.add("recommend");
-    square.addEventListener("click", () => {
-      this.movePiece(id, chess);
-    });
-  };
+
   this.changeColorKill = function (x, y, chess, key) {
     const id = `${column[x]}${y}`;
     console.log("can kill", id);
     const square = document.getElementById(id);
     square.classList.add("kill");
     square.addEventListener("click", () => {
-      this.killChess(id, chess, key); // '' là con cờ bị kill
+      this.killChess(id, chess, key);
     });
   };
 
@@ -94,6 +87,7 @@ function Board() {
       board.renderPosition();
       this.resetSquareColor();
       this.removeEventMove();
+      this.removeEventKill();
       chessMove.setPiece();
     }
   };
@@ -113,6 +107,7 @@ function Board() {
       const oldEl = document.getElementById(id);
       const newEl = oldEl.cloneNode(true);
       oldEl.parentNode.replaceChild(newEl, oldEl);
+      // set Piece lại và add event lại cho oldEl
     });
   };
 
@@ -176,5 +171,5 @@ const board = new Board();
 board.create();
 board.renderPosition();
 setDataToLocal("isWhite", "");
-setDataToLocal("recommend", "");
-setDataToLocal("kill", "");
+setDataToLocal("recommend", []);
+setDataToLocal("kill", []);
