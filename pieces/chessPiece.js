@@ -16,7 +16,6 @@ function ChessPiece(name, position, url, key) {
     });
   };
   this.isChosen = function (position) {
-    setDataToLocal("isMove", false);
     this.isNotChosen();
     document.getElementById(position).classList.add("chosen");
   };

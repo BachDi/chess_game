@@ -48,7 +48,6 @@ function Board() {
 
   this.movePiece = function (id, chess) {
     console.log("move to", id);
-    setDataToLocal("isMove", true);
     setDataToLocal("isWhite", chess.isWhite);
     const position = getDataFromLocal("position");
     const moveToSquare = document.getElementById(id);
@@ -61,8 +60,6 @@ function Board() {
           chess.position = id;
         }
       });
-      setDataToLocal("position", position);
-      this.defaultPosition();
 
       moveToSquare.parentNode.replaceChild(cloneMoveToSquare, moveToSquare);
       const cloneChosenSquare = chosenSquare.cloneNode(true);
@@ -76,6 +73,8 @@ function Board() {
       cloneChosenSquare.firstChild.src = "";
 
       cloneChosenSquare.classList.remove("chosen");
+      setDataToLocal("position", position);
+      board.defaultPosition();
       this.resetSquareColor();
       this.removeEvent();
       chess.setPiece();
@@ -109,8 +108,9 @@ function Board() {
     }
   };
 
-  this.killChess = function (id, chessKill, chessIsKilled) {
-    console.log("kill at", id);
+  this.killChess = function (chessKill, chessIsKilled) {
+    setDataToLocal("isWhite", chessKill.isWhite);
+    const id = chessIsKilled.position;
     const position = getDataFromLocal("position");
     position.forEach((chess) => {
       if (chess.key === chessIsKilled.key) {
@@ -121,9 +121,9 @@ function Board() {
       }
     });
     setDataToLocal("position", position);
-    chessIsKilled = "0";
+    chessIsKilled.position = "0";
     chessKill.position = id;
-    this.defaultPosition();
+    board.defaultPosition();
 
     const killSquare = document.getElementById(id);
     const chosenSquare = document.querySelector(".chosen");
