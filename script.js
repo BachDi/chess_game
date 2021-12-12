@@ -42,15 +42,18 @@ function Board() {
     const squares = document.querySelectorAll(`.square`);
     squares.forEach((square) => {
       square.classList.remove("recommend");
+      square.classList.remove("kill");
     });
   };
 
   this.movePiece = function (id, chess) {
+    console.log("move to", id);
     setDataToLocal("isMove", true);
     setDataToLocal("isWhite", chess.isWhite);
+    const position = getDataFromLocal("position");
     const moveToSquare = document.getElementById(id);
     const chosenSquare = document.querySelector(".chosen");
-    const position = getDataFromLocal("position");
+    const cloneMoveToSquare = moveToSquare.cloneNode(true);
     if (moveToSquare.classList.contains("recommend")) {
       chess.position = id;
       position.forEach((chess) => {
@@ -59,17 +62,19 @@ function Board() {
         }
       });
       setDataToLocal("position", position);
-      board.defaultPosition();
-      const cloneMoveToSquare = moveToSquare.cloneNode(true);
+      this.defaultPosition();
+
       moveToSquare.parentNode.replaceChild(cloneMoveToSquare, moveToSquare);
       const cloneChosenSquare = chosenSquare.cloneNode(true);
       chosenSquare.parentNode.replaceChild(cloneChosenSquare, chosenSquare);
+
       moveToSquare.firstChild.src = document.querySelector(".chosen img").src;
       moveToSquare.setAttribute("name", chosenSquare.getAttribute("name"));
-      cloneChosenSquare.setAttribute("name", "");
       moveToSquare.setAttribute("key", chosenSquare.getAttribute("key"));
+      cloneChosenSquare.setAttribute("name", "");
       cloneChosenSquare.setAttribute("key", "");
       cloneChosenSquare.firstChild.src = "";
+
       cloneChosenSquare.classList.remove("chosen");
       this.resetSquareColor();
       this.removeEvent();
@@ -104,7 +109,41 @@ function Board() {
     }
   };
 
-  this.killChess = function () {};
+  this.killChess = function (id, chessKill, chessIsKilled) {
+    console.log("kill at", id);
+    const position = getDataFromLocal("position");
+    position.forEach((chess) => {
+      if (chess.key === chessIsKilled.key) {
+        chess.position = "0";
+      }
+      if (chess.key === chessKill.key) {
+        chess.position = id;
+      }
+    });
+    setDataToLocal("position", position);
+    chessIsKilled = "0";
+    chessKill.position = id;
+    this.defaultPosition();
+
+    const killSquare = document.getElementById(id);
+    const chosenSquare = document.querySelector(".chosen");
+    const cloneKillSquare = killSquare.cloneNode(true);
+    killSquare.parentNode.replaceChild(cloneKillSquare, killSquare);
+    const cloneChosenSquare = chosenSquare.cloneNode(true);
+    chosenSquare.parentNode.replaceChild(cloneChosenSquare, chosenSquare);
+
+    killSquare.firstChild.src = document.querySelector(".chosen img").src;
+    killSquare.setAttribute("name", chosenSquare.getAttribute("name"));
+    killSquare.setAttribute("key", chosenSquare.getAttribute("key"));
+    cloneChosenSquare.setAttribute("name", "");
+    cloneChosenSquare.setAttribute("key", "");
+    cloneChosenSquare.firstChild.src = "";
+
+    cloneChosenSquare.classList.remove("chosen");
+    this.resetSquareColor();
+    this.removeEvent();
+    chessKill.setPiece();
+  };
 }
 
 //jesus
