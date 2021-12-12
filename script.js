@@ -107,7 +107,7 @@ function Board() {
       const oldEl = document.getElementById(id);
       const newEl = oldEl.cloneNode(true);
       oldEl.parentNode.replaceChild(newEl, oldEl);
-      // set Piece lại và add event lại cho oldEl
+      this.addEvenChosen();
     });
   };
 
@@ -164,12 +164,49 @@ function Board() {
     this.removeEventMove();
     chessKill.setPiece();
   };
+
+  this.addEvenChosen = function () {
+    whiteRook1.setPiece();
+    whiteRook2.setPiece();
+    whiteKnight1.setPiece();
+    whiteKnight2.setPiece();
+    whiteBishop1.setPiece();
+    whiteBishop2.setPiece();
+    whitePawn1.setPiece();
+    whitePawn2.setPiece();
+    whitePawn3.setPiece();
+    whitePawn4.setPiece();
+    whitePawn5.setPiece();
+    whitePawn6.setPiece();
+    whitePawn7.setPiece();
+    whitePawn8.setPiece();
+    whiteQueen.setPiece();
+    whiteKing.setPiece();
+    blackRook1.setPiece();
+    blackRook2.setPiece();
+    blackKnight1.setPiece();
+    blackKnight2.setPiece();
+    blackBishop1.setPiece();
+    blackBishop2.setPiece();
+    blackPawn1.setPiece();
+    blackPawn2.setPiece();
+    blackPawn3.setPiece();
+    blackPawn4.setPiece();
+    blackPawn5.setPiece();
+    blackPawn6.setPiece();
+    blackPawn7.setPiece();
+    blackPawn8.setPiece();
+    blackQueen.setPiece();
+    blackKing.setPiece();
+  };
 }
 
 //jesus
 const board = new Board();
 board.create();
 board.renderPosition();
+board.setPiece();
+
 setDataToLocal("isWhite", "");
 setDataToLocal("recommend", []);
 setDataToLocal("kill", []);
