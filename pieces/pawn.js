@@ -17,7 +17,7 @@ function Pawn(isWhite, id, key) {
           recommend.push(id);
         }
       } else {
-        board.changeSquareColor(x, y + 1, this); //1
+        board.changeSquareColor(x, y + 1, this);
         const id = `${column[x]}${y + 1}`;
         recommend.push(id);
       }
@@ -29,7 +29,7 @@ function Pawn(isWhite, id, key) {
           recommend.push(id);
         }
       } else {
-        board.changeSquareColor(x, y - 1, this); //2
+        board.changeSquareColor(x, y - 1, this);
         const id = `${column[x]}${y - 1}`;
         recommend.push(id);
       }

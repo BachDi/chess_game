@@ -27,12 +27,15 @@ function ChessPiece(name, position, url, key) {
   };
   this.recommendMoves = function () {};
   this.isEmpty = function (position) {
-    return document.getElementById(position).firstChild.src === link;
+    const imgLink = document.getElementById(position).firstChild.src;
+    return imgLink === link;
   };
 
-  this.setPosition = function (position) {
-    this.position = position;
-    console.log(this.position);
-    console.log(this);
+  this.checkKill = function (position) {
+    const square = document.getElementById(position);
+    const chessColor = square.getAttribute("key").slice(0, 5) === "white";
+    // console.log(chessColor);
+    // if (chessColor === getDataFromLocal("isWhite"))
+    // return;
   };
 }

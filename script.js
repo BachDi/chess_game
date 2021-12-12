@@ -33,7 +33,9 @@ function Board() {
     const id = `${column[x]}${y}`;
     const square = document.getElementById(id);
     square.classList.add("recommend");
-    square.addEventListener("click", () => this.movePiece(id, chess));
+    square.addEventListener("click", () => {
+      this.movePiece(id, chess);
+    });
   };
 
   this.resetSquareColor = () => {
@@ -101,7 +103,8 @@ function Board() {
       return false;
     }
   };
-  this.isKilled = function () {};
+
+  this.killChess = function () {};
 }
 
 //jesus
