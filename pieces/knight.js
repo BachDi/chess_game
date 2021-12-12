@@ -6,69 +6,199 @@ function Knight(isWhite, id, key){
     let x = id.charAt(0);
     let y = parseInt(id.charAt(1));
     let recommend = [];
+    let kill = [];
     x = column.findIndex((value) => value === x);
     // console.log(x, y);
     board.resetSquareColor();
+
     //top right
     let tempX = x + 1;
     let tempY = y + 2;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+        console.log("1");
+      }
     }
+
     tempX = x + 2;
     tempY = y + 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+        console.log("2");
+      }
     }
+
     //top left
     tempX = x - 1;
     tempY = y + 2;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+        console.log("3");
+      }
     }
+
     tempX = x - 2;
     tempY = y + 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+      }
     }
+
     //bottom right
     tempX = x + 1;
     tempY = y - 2;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+        console.log("8");
+      }
     }
+
     tempX = x + 2;
     tempY = y - 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+        console.log("5");
+      }
     }
+
     // bottom left
     tempX = x - 1;
     tempY = y - 2;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+        console.log("6");
+      }
     }
+
     tempX = x - 2;
     tempY = y - 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
+    } else if (
+      !board.isOutside(tempX, tempY) &&
+      !this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      const id = `${column[tempX]}${tempY}`;
+      const squareKey = document.getElementById(id).getAttribute("key")
+      const squareColor = squareKey.slice(0,5) === "white"
+      if (this.isWhite !== squareColor) {
+        board.changeColorKill(tempX, tempY, this);
+        kill.push(id);
+        console.log("7");
+      }
     }
+
     setDataToLocal("recommend", recommend);
+    setDataToLocal("kill", kill);
   }
 }

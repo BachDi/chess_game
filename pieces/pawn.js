@@ -15,13 +15,13 @@ function Pawn(isWhite, id, key) {
           if (!this.isEmpty(`${column[x]}${i}`)) {
             break;
           }
-          board.changeSquareColor(x, i, this);
+          board.changeColorRecommend(x, i, this);
           const id = `${column[x]}${i}`;
           recommend.push(id);
         }
       } else {
         if (this.isEmpty(`${column[x]}${y + 1}`)) {
-          board.changeSquareColor(x, y + 1, this);
+          board.changeColorRecommend(x, y + 1, this);
           const id = `${column[x]}${y + 1}`;
           recommend.push(id);
         }
@@ -32,13 +32,13 @@ function Pawn(isWhite, id, key) {
           if (!this.isEmpty(`${column[x]}${i}`)) {
             break;
           }
-          board.changeSquareColor(x, i, this);
+          board.changeColorRecommend(x, i, this);
           const id = `${column[x]}${i}`;
           recommend.push(id);
         }
       } else {
         if (this.isEmpty(`${column[x]}${y - 1}`)) {
-          board.changeSquareColor(x, y - 1, this);
+          board.changeColorRecommend(x, y - 1, this);
           const id = `${column[x]}${y - 1}`;
           recommend.push(id);
         }

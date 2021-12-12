@@ -3,7 +3,7 @@ skinparam groupInheritance 2
 class ChessBoard {
     + create()
     + addSquareToRow()
-    + changeSquareColor()
+    + changeColorRecommend()
 }
 class ChessPiece {
     + id

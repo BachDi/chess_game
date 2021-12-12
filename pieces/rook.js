@@ -13,7 +13,7 @@ function Rook(isWhite, id, key) {
       if (!this.isEmpty(`${column[x]}${top}`)) {
         break;
       }
-      board.changeSquareColor(x, top, this);
+      board.changeColorRecommend(x, top, this);
       const id = `${column[x]}${top}`;
       recommend.push(id);
     }
@@ -21,7 +21,7 @@ function Rook(isWhite, id, key) {
       if (!this.isEmpty(`${column[x]}${bottom}`)) {
         break;
       }
-      board.changeSquareColor(x, bottom, this);
+      board.changeColorRecommend(x, bottom, this);
       const id = `${column[x]}${bottom}`;
       recommend.push(id);
     }
@@ -29,7 +29,7 @@ function Rook(isWhite, id, key) {
       if (!this.isEmpty(`${column[right]}${y}`)) {
         break;
       }
-      board.changeSquareColor(right, y, this);
+      board.changeColorRecommend(right, y, this);
       const id = `${column[right]}${y}`;
       recommend.push(id);
     }
@@ -37,7 +37,7 @@ function Rook(isWhite, id, key) {
       if (!this.isEmpty(`${column[left]}${y}`)) {
         break;
       }
-      board.changeSquareColor(left, y, this);
+      board.changeColorRecommend(left, y, this);
       const id = `${column[left]}${y}`;
       recommend.push(id);
     }

@@ -11,57 +11,81 @@ function King(isWhite, id, key){
     board.resetSquareColor();
     let tempX = x + 1;
     let tempY = y;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
     tempX = x + 1;
     tempY = y + 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
     tempX = x;
     tempY = y + 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
     tempX = x - 1;
     tempY = y;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
     tempX = x - 1;
     tempY = y - 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
     tempX = x;
     tempY = y - 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
     tempX = x + 1;
     tempY = y - 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
     tempX = x - 1;
     tempY = y + 1;
-    if (!board.isOutside(tempX, tempY) && this.isEmpty(`${column[tempX]}${tempY}`)) {
-      board.changeSquareColor(tempX, tempY, this);
+    if (
+      !board.isOutside(tempX, tempY) &&
+      this.isEmpty(`${column[tempX]}${tempY}`)
+    ) {
+      board.changeColorRecommend(tempX, tempY, this);
       const id = `${column[tempX]}${tempY}`;
       recommend.push(id);
     }
