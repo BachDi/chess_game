@@ -14,16 +14,6 @@ function Pawn(isWhite, id, key) {
       if (y === 2) {
         for (i = y + 1; i <= y + 2; i++) {
           if (!this.isEmpty(`${column[x]}${i}`)) {
-<<<<<<< Updated upstream
-            const id = `${column[x]}${i}`;
-            const squareKey = document.getElementById(id).getAttribute("key");
-            const squareColor = squareKey.slice(0, 5) === "white";
-            if (this.isWhite !== squareColor) {
-              board.changeColorKill(x, i, this, squareKey);
-              kill.push(id);
-            }
-=======
->>>>>>> Stashed changes
             break;
           }
           board.changeColorRecommend(x, i, this);
@@ -35,16 +25,6 @@ function Pawn(isWhite, id, key) {
           board.changeColorRecommend(x, y + 1, this);
           const id = `${column[x]}${y + 1}`;
           recommend.push(id);
-<<<<<<< Updated upstream
-        } else {
-          const id = `${column[x]}${y + 1}`;
-          const squareKey = document.getElementById(id).getAttribute("key");
-          const squareColor = squareKey.slice(0, 5) === "white";
-          if (this.isWhite !== squareColor) {
-            board.changeColorKill(x, y + 1, this, squareKey);
-            kill.push(id)
-          }
-=======
         }
       }
       if (!board.isOutside(x + 1, y + 1) && !this.isEmpty(`${column[x + 1]}${y + 1}`)) {
@@ -63,23 +43,12 @@ function Pawn(isWhite, id, key) {
         if (this.isWhite !== squareColor) {
           board.changeColorKill(x - 1, y + 1, this, squareKey);
           kill.push(id);
->>>>>>> Stashed changes
         }
       }
     } else {
       if (y === 7) {
         for (i = y - 1; i >= y - 2; i--) {
           if (!this.isEmpty(`${column[x]}${i}`)) {
-<<<<<<< Updated upstream
-            const id = `${column[x]}${i}`;
-            const squareKey = document.getElementById(id).getAttribute("key");
-            const squareColor = squareKey.slice(0, 5) === "white";
-            if (this.isWhite !== squareColor) {
-              board.changeColorKill(x, i, this, squareKey);
-              kill.push(id);
-            }
-=======
->>>>>>> Stashed changes
             break;
           }
           board.changeColorRecommend(x, i, this);
@@ -91,16 +60,6 @@ function Pawn(isWhite, id, key) {
           board.changeColorRecommend(x, y - 1, this);
           const id = `${column[x]}${y - 1}`;
           recommend.push(id);
-<<<<<<< Updated upstream
-        } else {
-          const id = `${column[x]}${y - 1}`;
-          const squareKey = document.getElementById(id).getAttribute("key");
-          const squareColor = squareKey.slice(0, 5) === "white";
-          if (this.isWhite !== squareColor) {
-            board.changeColorKill(x, y - 1, this, squareKey);
-            kill.push(id)
-          }
-=======
         }
       }
       if (!board.isOutside(x + 1, y - 1) && !this.isEmpty(`${column[x + 1]}${y - 1}`)) {
@@ -119,7 +78,6 @@ function Pawn(isWhite, id, key) {
         if (this.isWhite !== squareColor) {
           board.changeColorKill(x - 1, y - 1, this, squareKey);
           kill.push(id);
->>>>>>> Stashed changes
         }
       }
     }
@@ -135,27 +93,19 @@ function Pawn(isWhite, id, key) {
     if (this.isWhite === true) {
       if (!board.isOutside(x + 1, y + 1)) {
         const id = `${column[x + 1]}${y + 1}`;
-        const squareKey = document.getElementById(id).getAttribute("key");
-        board.changeColorKill(x + 1, y + 1, this, squareKey);
         inSight.push(id);
       }
       if (!board.isOutside(x - 1, y + 1)) {
         const id = `${column[x - 1]}${y + 1}`;
-        const squareKey = document.getElementById(id).getAttribute("key");
-        board.changeColorKill(x - 1, y + 1, this, squareKey);
         inSight.push(id);
       }
     } else {
       if (!board.isOutside(x + 1, y - 1)) {
         const id = `${column[x + 1]}${y - 1}`;
-        const squareKey = document.getElementById(id).getAttribute("key");
-        board.changeColorKill(x + 1, y - 1, this, squareKey);
         inSight.push(id);
       }
       if (!board.isOutside(x - 1, y - 1)) {
         const id = `${column[x - 1]}${y - 1}`;
-        const squareKey = document.getElementById(id).getAttribute("key");
-        board.changeColorKill(x - 1, y - 1, this, squareKey);
         inSight.push(id);
       }
     }
