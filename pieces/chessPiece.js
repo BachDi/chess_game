@@ -28,7 +28,7 @@ function ChessPiece(name, position, url, key) {
   };
   this.recommendMoves = function () {};
   this.isEmpty = function (position) {
-    if (document.getElementById(position).firstChild.src === link) return true;
+    return document.getElementById(position).firstChild.src === link;
   };
 
   this.setPosition = function (position) {
