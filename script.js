@@ -40,7 +40,6 @@ function Board() {
 
   this.changeColorKill = function (x, y, chess, key) {
     const id = `${column[x]}${y}`;
-    console.log("can kill", id);
     const square = document.getElementById(id);
     square.classList.add("kill");
     square.addEventListener("click", () => {
@@ -57,7 +56,6 @@ function Board() {
   };
 
   this.movePiece = function (id, chessMove) {
-    console.log("move to", id);
     setDataToLocal("isWhite", chessMove.isWhite);
     const position = getDataFromLocal("position");
     const moveToSquare = document.getElementById(id);
@@ -205,7 +203,7 @@ function Board() {
 const board = new Board();
 board.create();
 board.renderPosition();
-board.setPiece();
+board.addEvenChosen();
 
 setDataToLocal("isWhite", "");
 setDataToLocal("recommend", []);

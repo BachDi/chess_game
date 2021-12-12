@@ -20,7 +20,6 @@ function Pawn(isWhite, id, key) {
             if (this.isWhite !== squareColor) {
               board.changeColorKill(x, i, this, squareKey);
               kill.push(id);
-              console.log("1");
             }
             break;
           }
@@ -39,8 +38,7 @@ function Pawn(isWhite, id, key) {
           const squareColor = squareKey.slice(0, 5) === "white";
           if (this.isWhite !== squareColor) {
             board.changeColorKill(x, y + 1, this, squareKey);
-            kill.push(id);
-            console.log("1");
+            kill.push(id)
           }
         }
       }
@@ -54,7 +52,6 @@ function Pawn(isWhite, id, key) {
             if (this.isWhite !== squareColor) {
               board.changeColorKill(x, i, this, squareKey);
               kill.push(id);
-              console.log("1");
             }
             break;
           }
@@ -73,8 +70,7 @@ function Pawn(isWhite, id, key) {
           const squareColor = squareKey.slice(0, 5) === "white";
           if (this.isWhite !== squareColor) {
             board.changeColorKill(x, y - 1, this, squareKey);
-            kill.push(id);
-            console.log("1");
+            kill.push(id)
           }
         }
       }

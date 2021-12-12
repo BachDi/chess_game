@@ -31,7 +31,6 @@ function Knight(isWhite, id, key){
       if (this.isWhite !== squareColor) {
         board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
-        console.log("1");
       }
     }
 
@@ -54,7 +53,6 @@ function Knight(isWhite, id, key){
       if (this.isWhite !== squareColor) {
         board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
-        console.log("2");
       }
     }
 
@@ -78,7 +76,6 @@ function Knight(isWhite, id, key){
       if (this.isWhite !== squareColor) {
         board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
-        console.log("3");
       }
     }
 
@@ -124,7 +121,6 @@ function Knight(isWhite, id, key){
       if (this.isWhite !== squareColor) {
         board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
-        console.log("8");
       }
     }
 
@@ -147,7 +143,6 @@ function Knight(isWhite, id, key){
       if (this.isWhite !== squareColor) {
         board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
-        console.log("5");
       }
     }
 
@@ -171,7 +166,6 @@ function Knight(isWhite, id, key){
       if (this.isWhite !== squareColor) {
         board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
-        console.log("6");
       }
     }
 
@@ -194,7 +188,6 @@ function Knight(isWhite, id, key){
       if (this.isWhite !== squareColor) {
         board.changeColorKill(tempX, tempY, this, squareKey);
         kill.push(id);
-        console.log("7");
       }
     }
 

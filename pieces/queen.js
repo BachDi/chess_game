@@ -12,6 +12,13 @@ function Queen(isWhite, id, key) {
     board.resetSquareColor();
     for (let top = y + 1; top <= 8; top++) {
       if (!this.isEmpty(`${column[x]}${top}`)) {
+        const id = `${column[x]}${top}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(x, top, this, squareKey);
+          kill.push(id);
+        }
         break;
       }
       board.changeColorRecommend(x, top, this);
@@ -20,6 +27,13 @@ function Queen(isWhite, id, key) {
     }
     for (let bottom = y - 1; bottom > 0; bottom--) {
       if (!this.isEmpty(`${column[x]}${bottom}`)) {
+        const id = `${column[x]}${bottom}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(x, bottom, this, squareKey);
+          kill.push(id);
+        }
         break;
       }
       board.changeColorRecommend(x, bottom, this);
