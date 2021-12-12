@@ -45,6 +45,7 @@ function Board() {
 
   this.movePiece = function (id, chess) {
     setDataToLocal("isMove", true);
+    setDataToLocal("isWhite", chess.isWhite);
     const moveToSquare = document.getElementById(id);
     const chosenSquare = document.querySelector(".chosen");
     const position = getDataFromLocal("position");
@@ -93,13 +94,14 @@ function Board() {
     });
   };
 
-  this.isOutside = function (x , y) {
+  this.isOutside = function (x, y) {
     if (x > 8 || x < 1 || y > 8 || y < 1) {
       return true;
     } else {
-      return false
+      return false;
     }
-  }
+  };
+  this.isKilled = function () {};
 }
 
 //jesus
