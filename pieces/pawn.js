@@ -8,11 +8,20 @@ function Pawn(isWhite, id, key) {
     x = column.findIndex((value) => value === x);
     // console.log(x, y);
     let recommend = [];
+    let kill = [];
     board.resetSquareColor();
     if (this.isWhite === true) {
       if (y === 2) {
         for (i = y + 1; i <= y + 2; i++) {
           if (!this.isEmpty(`${column[x]}${i}`)) {
+            const id = `${column[x]}${i}`;
+            const squareKey = document.getElementById(id).getAttribute("key");
+            const squareColor = squareKey.slice(0, 5) === "white";
+            if (this.isWhite !== squareColor) {
+              board.changeColorKill(x, i, this, squareKey);
+              kill.push(id);
+              console.log("1");
+            }
             break;
           }
           board.changeColorRecommend(x, i, this);
@@ -24,12 +33,29 @@ function Pawn(isWhite, id, key) {
           board.changeColorRecommend(x, y + 1, this);
           const id = `${column[x]}${y + 1}`;
           recommend.push(id);
+        } else {
+          const id = `${column[x]}${y + 1}`;
+          const squareKey = document.getElementById(id).getAttribute("key");
+          const squareColor = squareKey.slice(0, 5) === "white";
+          if (this.isWhite !== squareColor) {
+            board.changeColorKill(x, y + 1, this, squareKey);
+            kill.push(id);
+            console.log("1");
+          }
         }
       }
     } else {
       if (y === 7) {
         for (i = y - 1; i >= y - 2; i--) {
           if (!this.isEmpty(`${column[x]}${i}`)) {
+            const id = `${column[x]}${i}`;
+            const squareKey = document.getElementById(id).getAttribute("key");
+            const squareColor = squareKey.slice(0, 5) === "white";
+            if (this.isWhite !== squareColor) {
+              board.changeColorKill(x, i, this, squareKey);
+              kill.push(id);
+              console.log("1");
+            }
             break;
           }
           board.changeColorRecommend(x, i, this);
@@ -41,12 +67,20 @@ function Pawn(isWhite, id, key) {
           board.changeColorRecommend(x, y - 1, this);
           const id = `${column[x]}${y - 1}`;
           recommend.push(id);
+        } else {
+          const id = `${column[x]}${y - 1}`;
+          const squareKey = document.getElementById(id).getAttribute("key");
+          const squareColor = squareKey.slice(0, 5) === "white";
+          if (this.isWhite !== squareColor) {
+            board.changeColorKill(x, y - 1, this, squareKey);
+            kill.push(id);
+            console.log("1");
+          }
         }
       }
     }
     setDataToLocal("recommend", recommend);
+    setDataToLocal("kill", kill);
   };
-  this.oldId = function () {};
-  this.currentId = function () {};
 }
 //fk chess :D

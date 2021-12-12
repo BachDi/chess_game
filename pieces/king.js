@@ -6,6 +6,7 @@ function King(isWhite, id, key){
     let x = id.charAt(0);
     let y = parseInt(id.charAt(1));
     let recommend = [];
+    let kill = [];
     x = column.findIndex((value) => value === x);
     // console.log(x, y);
     board.resetSquareColor();
@@ -90,5 +91,6 @@ function King(isWhite, id, key){
       recommend.push(id);
     }
     setDataToLocal("recommend", recommend);
+    setDataToLocal("kill", kill);
   }
 }

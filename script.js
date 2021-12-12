@@ -63,15 +63,15 @@ function Board() {
     });
   };
 
-  this.movePiece = function (id, chess) {
+  this.movePiece = function (id, chessMove) {
     console.log("move to", id);
-    setDataToLocal("isWhite", chess.isWhite);
+    setDataToLocal("isWhite", chessMove.isWhite);
     const position = getDataFromLocal("position");
     const moveToSquare = document.getElementById(id);
     const chosenSquare = document.querySelector(".chosen");
     const cloneMoveToSquare = moveToSquare.cloneNode(true);
+    chessMove.position = id;
     if (moveToSquare.classList.contains("recommend")) {
-      chess.position = id;
       position.forEach((chess) => {
         if (chess.key === chosenSquare.getAttribute("key")) {
           chess.position = id;
@@ -94,7 +94,7 @@ function Board() {
       board.renderPosition();
       this.resetSquareColor();
       this.removeEventMove();
-      chess.setPiece();
+      chessMove.setPiece();
     }
   };
 
@@ -166,6 +166,7 @@ function Board() {
     cloneChosenSquare.classList.remove("chosen");
     this.resetSquareColor();
     this.removeEventKill();
+    this.removeEventMove();
     chessKill.setPiece();
   };
 }

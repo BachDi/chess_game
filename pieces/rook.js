@@ -7,6 +7,7 @@ function Rook(isWhite, id, key) {
     let y = parseInt(id.charAt(1));
     x = column.findIndex((value) => value === x);
     let recommend = [];
+    let kill = [];
     // console.log(x, y);
     board.resetSquareColor();
     for (let top = y + 1; top <= 8; top++) {
@@ -42,5 +43,6 @@ function Rook(isWhite, id, key) {
       recommend.push(id);
     }
     setDataToLocal("recommend", recommend);
+    setDataToLocal("kill", kill);
   };
 }
