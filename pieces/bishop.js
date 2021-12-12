@@ -16,10 +16,17 @@ function Bishop(isWhite, id, key) {
     //top right
     let tempX = x;
     let tempY = y;
-    while (
-      !board.isOutside(tempX + 1, tempY + 1) &&
-      this.isEmpty(`${column[tempX + 1]}${tempY + 1}`)
-    ) {
+    while (!board.isOutside(tempX + 1, tempY + 1)) {
+      if (!this.isEmpty(`${column[tempX + 1]}${tempY + 1}`)) {
+        const id = `${column[tempX + 1]}${tempY + 1}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX + 1, tempY + 1, this, squareKey);
+          kill.push(id);
+        }
+        break;
+      }
       tempX += 1;
       tempY += 1;
       board.changeColorRecommend(tempX, tempY, this);
@@ -29,10 +36,17 @@ function Bishop(isWhite, id, key) {
     //top left
     tempX = x;
     tempY = y;
-    while (
-      !board.isOutside(tempX + 1, tempY - 1) &&
-      this.isEmpty(`${column[tempX + 1]}${tempY - 1}`)
-    ) {
+    while (!board.isOutside(tempX + 1, tempY - 1)) {
+      if (!this.isEmpty(`${column[tempX + 1]}${tempY - 1}`)) {
+        const id = `${column[tempX + 1]}${tempY - 1}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX + 1, tempY - 1, this, squareKey);
+          kill.push(id);
+        }
+        break;
+      }
       tempX += 1;
       tempY -= 1;
       board.changeColorRecommend(tempX, tempY, this);
@@ -42,10 +56,17 @@ function Bishop(isWhite, id, key) {
     //bottom right
     tempX = x;
     tempY = y;
-    while (
-      !board.isOutside(tempX - 1, tempY + 1) &&
-      this.isEmpty(`${column[tempX - 1]}${tempY + 1}`)
-    ) {
+    while (!board.isOutside(tempX - 1, tempY + 1)) {
+      if (!this.isEmpty(`${column[tempX - 1]}${tempY + 1}`)) {
+        const id = `${column[tempX - 1]}${tempY + 1}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX - 1, tempY + 1, this, squareKey);
+          kill.push(id);
+        }
+        break;
+      }
       tempX -= 1;
       tempY += 1;
       board.changeColorRecommend(tempX, tempY, this);
@@ -55,10 +76,17 @@ function Bishop(isWhite, id, key) {
     //bottom left
     tempX = x;
     tempY = y;
-    while (
-      !board.isOutside(tempX - 1, tempY - 1) &&
-      this.isEmpty(`${column[tempX - 1]}${tempY - 1}`)
-    ) {
+    while (!board.isOutside(tempX - 1, tempY - 1)) {
+      if (!this.isEmpty(`${column[tempX - 1]}${tempY - 1}`)) {
+        const id = `${column[tempX - 1]}${tempY - 1}`;
+        const squareKey = document.getElementById(id).getAttribute("key");
+        const squareColor = squareKey.slice(0, 5) === "white";
+        if (this.isWhite !== squareColor) {
+          board.changeColorKill(tempX - 1, tempY - 1, this, squareKey);
+          kill.push(id);
+        }
+        break;
+      }
       tempX -= 1;
       tempY -= 1;
       board.changeColorRecommend(tempX, tempY, this);
