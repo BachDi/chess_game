@@ -32,11 +32,4 @@ function ChessPiece(name, position, url, key) {
     return imgLink === link;
   };
 
-  this.checkKill = function (position) {
-    const square = document.getElementById(position);
-    const chessColor = square.getAttribute("key").slice(0, 5) === "white";
-    // console.log(chessColor);
-    // if (chessColor === getDataFromLocal("isWhite"))
-    // return;
-  };
 }

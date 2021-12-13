@@ -53,6 +53,7 @@ function Board() {
       square.classList.remove("recommend");
       square.classList.remove("kill");
     });
+    this.notifyTurn();
   };
 
   this.movePiece = function (id, chessMove) {
@@ -200,6 +201,12 @@ function Board() {
     blackQueen.setPiece();
     blackKing.setPiece();
   };
+  this.notifyTurn = function () {
+    const noti = !getDataFromLocal("isWhite")
+      ? `Turn of White`
+      : `Turn of Black`;
+    document.getElementById("notification").innerHTML = noti;
+  };
 }
 
 //jesus
@@ -208,6 +215,6 @@ board.create();
 board.renderPosition();
 board.addEvenChosen();
 
-setDataToLocal("isWhite", "");
+setDataToLocal("isWhite", false);
 setDataToLocal("recommend", []);
 setDataToLocal("kill", []);
