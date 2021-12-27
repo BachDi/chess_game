@@ -1,9 +1,29 @@
 body {
   width: 100vw;
   height: 100vh;
+  user-select: none;
+  background-color: khaki;
+}
+.header {
+  width: 60%;
+  margin: 0 auto;
+}
+.header h1{
+  color: indianred;
+  text-align: center;
+}
+.header p {
+  color: red;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
 }
 .chessboard {
-  width: fit-content;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin-left: -25px;
+  align-items: center;
 }
 .square {
   height: 50px;
@@ -14,11 +34,11 @@ body {
 }
 .black {
   outline: 1px solid black;
-  background: #37797D;
+  background: #37797d;
 }
 .white {
   outline: 1px solid black;
-  background: white
+  background: white;
 }
 .row {
   display: flex;
@@ -45,4 +65,13 @@ body {
 .square.white.chosen {
   background: red;
   opacity: 0.7;
+}
+.square.black.kill {
+  background: hotpink;
+}
+.square.white.kill {
+  background: hotpink;
+}
+.no-click {
+  pointer-events: none;
 }

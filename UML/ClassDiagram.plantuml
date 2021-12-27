@@ -3,18 +3,44 @@ skinparam groupInheritance 2
 class ChessBoard {
     + create()
     + addSquareToRow()
-    + changeSquareColor()
+    + changeColorRecommend()
 }
-ChessBoard <-- ChessPiece
-ChessBoard <-- Controller
 class ChessPiece {
     + id
     + name 
     + url 
     + setPiece() 
     + isChosen() 
+    + isNotChosen()
+    + isEmpty()
     + recommendMoves() 
+    + movePiece()
 }
+class Pawn {
+    + recommendMovesForPawn()
+    + promote()
+}
+class Knight {
+    + recommendMovesForKnight()
+}
+class Rook {
+    + isMoved
+    + recommendMovesForRook()
+}
+class Bishop {
+    + recommendMovesForBishop()
+}
+class Queen {
+    + recommendMovesForQueen()
+}
+class King {
+    + recommendMovesForKing()
+    + isChecked()
+    + isCheckmate()
+    + castle()
+}
+
+ChessBoard "1" <-- "n" ChessPiece
 ChessPiece <|-- Pawn 
 ChessPiece <|-- Rook 
 ChessPiece <|-- Knight 

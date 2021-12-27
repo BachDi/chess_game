@@ -1,35 +1,35 @@
-function ChessPiece(name, id, url) {
+function ChessPiece(name, position, url, key) {
   this.name = name;
-  this.id = id;
+  this.position = position;
   this.url = url;
+  this.key = key;
   this.setPiece = function () {
-    const square = document.getElementById(this.id);
-    const img = document.createElement("img")
-    img.src = this.url
-    square.appendChild(img)
-    square.setAttribute("name", name)
+    const square = document.getElementById(this.position);
     square.addEventListener("click", () => {
-      this.isChosen(this.id);
-      this.recommendMoves(this.id);
-    })
-  }
-  this.isChosen = function (id) {
-    this.id = id
-    this.isNotChosen()
-    document.getElementById(id).classList.add("chosen")
-  }
-  this.isNotChosen = function () {
-    const squares = document.querySelectorAll(`.square`)
-    squares.forEach(square => square.classList.remove("chosen"))
-  }
-  this.recommendMoves = function (id) {
-    const pieceName = this.name;
-    console.log(pieceName);
-    switch (pieceName) {
-      case 'pawn':
-        this.recommendMovesForPawns(id);
-        break;
-
-    }
+      if (
+        !this.isEmpty(this.position) &&
+        getDataFromLocal("isWhite") !== this.isWhite
+      ) {
+        this.isChosen(this.position);
+        this.recommendMoves(this.position);
+        this.inSight(this.position);
+      }
+    });
   };
+  this.isChosen = function (position) {
+    this.isNotChosen();
+    document.getElementById(position).classList.add("chosen");
+  };
+  this.isNotChosen = function () {
+    const squares = document.querySelectorAll(`.square`);
+    squares.forEach((square) => square.classList.remove("chosen"));
+    squares.forEach((square) => square.classList.remove("recommend"));
+  };
+  this.recommendMoves = function () {};
+  this.inSight = function () {};
+  this.isEmpty = function (position) {
+    const imgLink = document.getElementById(position).firstChild.src;
+    return imgLink === link;
+  };
+
 }
