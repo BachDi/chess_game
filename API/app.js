@@ -27,30 +27,8 @@ const route = {
 console.log(Object.keys(route.GET));
 console.log(Object.values(route.GET));
 
-const option = {
-  method: "GET",
-  url: "/tasks",
-};
-const option2 = {
-  method: "PATCH",
-  url: "/tasks",
-};
-const option3 = {
-  method: "DELETE",
-  url: "/tasks/:id",
-};
-const option4 = {
-  method: "POST",
-  url: "/tasks",
-};
-
-const option5 = {
-  method: "GET",
-  url: "/image",
-};
-
 function handlerGetTask(req, res) {
-  if (req.url === option.url) {
+  if (req.url === "/tasks") {
     res.setHeader("Content-Type", "application/json");
     return res.end(JSON.stringify(tasks));
   } else if (req.url.search("tasks/:") !== -1) {
@@ -62,7 +40,7 @@ function handlerGetTask(req, res) {
         return res.end(JSON.stringify(task));
       }
     });
-  } else if (req.url === option5.url) {
+  } else if (req.url === "/image") {
     fs.readFile("img/hinh1.jpg", (err, data) => {
       if (err) {
         res.writeHead(404);
@@ -94,7 +72,7 @@ function handlerDeleteTask(req, res) {
 
 function handlerCreateTask(req, res) {
   if (req.method === "POST") {
-    if (req.url === option4.url) {
+    if (req.url === "/tasks") {
       res.setHeader("Content-Type", "application/json");
       let rawData = "";
       req
@@ -153,7 +131,7 @@ module.exports = {
       handlerDeleteTask(req, res, query);
     } else if (pathname === "/tasks" && req.method === "POST") {
       handlerCreateTask(req, res);
-    } else if (pathname === "/tasks" && req.method === "PUT") {
+    } else if (pathname === "/tasks" && req.method === "PATCH") {
       handlerUpdateTask(req, res, query);
     } else {
       res.write("404 not found");
