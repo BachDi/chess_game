@@ -18,8 +18,10 @@ function handlerGetTask(req, res) {
                 return res.end(JSON.stringify(task));
             }
         });
-        return res.end(JSON.stringify(tasks));
-    } 
+    } else {
+        res.setHeader("Content-Type", "application/json");
+        return res.end(JSON.stringify(tasks))
+    };
 }
 
 function handlerDeleteTask(req, res) {
