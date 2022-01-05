@@ -13,16 +13,20 @@
 const fs = require("fs")
 
 const dataSource = {
-    get: getDataFromDatabase,
-    write: writeDataToDatabase
-}
+  getDataFromDatabase,
+  writeDataToDatabase,
+};
+
+const getData = dataSource.getDataFromDatabase;
+// console.log(dataSource.getDataFromDatabase);
+getData("tasks");
 
 function getDataFromDatabase(dataBase) {
   const dataPath = `../database/${dataBase}.json`;
   console.log(dataPath);
-  return JSON.stringify(fs.readFile(dataPath));
+  //   return JSON.stringify(fs.readFile(dataPath));
+  return JSON.parse(fs.readFile(dataPath));
 }
-console.log(getDataFromDatabase("tasks"));
 
 function writeDataToDatabase(dataBase, newdata) {
     const dataPath = `../database/${dataBase}.json`

@@ -1,6 +1,6 @@
 const fs = require("fs");
-// const tasks = require("../database/tasks.json");
-const dataSource = require("../datasource/index");
+const tasks = require("../database/tasks.json");
+const dataSource = require("../datasource");
 
 const taskHandler = {
   handlerGetTask,
@@ -9,7 +9,7 @@ const taskHandler = {
   handlerUpdateTask,
 };
 
-// const tasks = dataSource.get
+// console.log(dataSource.getDataFromDatabase);
 
 function handlerGetTask(req, res) {
   if (req.url.includes("tasks/:")) {
@@ -23,7 +23,7 @@ function handlerGetTask(req, res) {
     });
   } else {
     res.setHeader("Content-Type", "application/json");
-    return res.end(tasks);
+    return res.end(JSON.stringify(tasks));
   }
 }
 
