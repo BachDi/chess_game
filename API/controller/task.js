@@ -1,5 +1,5 @@
 const fs = require("fs");
-const tasks = require("./../tasks.json");
+const tasks = require("../tasks.json");
 
 const taskHandler = {
   handlerGetTask,

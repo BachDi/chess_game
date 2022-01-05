@@ -1,9 +1,9 @@
-const imageHandler = require("../handler/image")
+const imageHandler = require("../controller/image");
 
 const imageRoutes = {
-    GET: {
-        "/images": imageHandler.handlerGetImage,
-    }
+  GET: {
+    "/images": imageHandler.handlerGetImage,
+  },
 };
 
 module.exports = imageRoutes;

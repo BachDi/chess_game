@@ -1,4 +1,4 @@
-const taskHandler = require("../handler/task")
+const taskHandler = require("../controller/task");
 
 const taskRoutes = {
   GET: {
