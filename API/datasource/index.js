@@ -12,6 +12,11 @@
 
 const fs = require("fs")
 
+const dataSource = {
+    get: getDataFromDatabase,
+    write: writeDataToDatabase
+}
+
 function getDataFromDatabase(dataBase) {
     const dataPath = `../database/${dataBase}.json`
 
@@ -22,3 +27,5 @@ function writeDataToDatabase(dataBase, newdata) {
     const dataPath = `../database/${dataBase}.json`
     fs.writeFileSync(dataPath, JSON.stringify(newdata))
 }
+
+module.exports = dataSource;
