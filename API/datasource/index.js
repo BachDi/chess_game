@@ -18,10 +18,11 @@ const dataSource = {
 }
 
 function getDataFromDatabase(dataBase) {
-    const dataPath = `../database/${dataBase}.json`
-
-    return JSON.parse(fs.readFile(dataPath))
+  const dataPath = `../database/${dataBase}.json`;
+  console.log(dataPath);
+  return JSON.stringify(fs.readFile(dataPath));
 }
+console.log(getDataFromDatabase("tasks"));
 
 function writeDataToDatabase(dataBase, newdata) {
     const dataPath = `../database/${dataBase}.json`

@@ -1,5 +1,6 @@
 const fs = require("fs");
-const tasks = require("../tasks.json");
+// const tasks = require("../database/tasks.json");
+const dataSource = require("../datasource/index");
 
 const taskHandler = {
   handlerGetTask,
@@ -7,6 +8,8 @@ const taskHandler = {
   handlerDeleteTask,
   handlerUpdateTask,
 };
+
+// const tasks = dataSource.get
 
 function handlerGetTask(req, res) {
   if (req.url.includes("tasks/:")) {
@@ -20,7 +23,7 @@ function handlerGetTask(req, res) {
     });
   } else {
     res.setHeader("Content-Type", "application/json");
-    return res.end(JSON.stringify(tasks));
+    return res.end(tasks);
   }
 }
 
