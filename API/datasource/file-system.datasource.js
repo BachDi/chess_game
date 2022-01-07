@@ -3,7 +3,7 @@ function FileSystemDataSource(databasePath = '') {
     this.databasePath = databasePath
 
     this.readCollection = function readCollection(collectionName = '') {
-        const collectionPath = `${this.databasePath}/${collectionName.toLowerCase()}.txt`
+        const collectionPath = `${this.databasePath}/${collectionName.toLowerCase()}.json`
 
         return fs.readFile(collectionPath)
             .then(data => {
@@ -17,7 +17,7 @@ function FileSystemDataSource(databasePath = '') {
     }
 
     this.updateCollection = function updateCollection(collectionName = '', newData) {
-        const collectionPath = `${this.databasePath}/${collectionName.toLowerCase()}.txt`
+        const collectionPath = `${this.databasePath}/${collectionName.toLowerCase()}.json`
         return fs.writeFile(collectionPath, JSON.stringify(newData)).catch(() => {
             // create database folder in case error due to database folder does not exist
             return fs.mkdir(database)

@@ -1,12 +1,12 @@
 const FileSystemDataSource = require("./file-system.datasource")
 
-const databbase = "./database"
+const database = "./database"
 
 const DBCollection = {
     task: "tasks",
 }
 
-const fileSystemDataSource = new FileSystemDataSource(databbase)
+const fileSystemDataSource = new FileSystemDataSource(database)
 
 module.exports = {DBCollection, fileSystemDataSource}
 
