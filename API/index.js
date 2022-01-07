@@ -1,11 +1,10 @@
 const http = require("http");
-const routes = require("./routes/routes");
-const url = require("url");
-const { handleNotFound } = require("./controller/task");
+const { getRouter } = require("./router");
+
 const { DBCollection, fileSystemDataSource } = require("./datasource");
 
 const hostname = "127.0.0.1";
-const port = 3000;
+const port = 8000;
 
 //connect mongoose
 const mongoose = require("mongoose");
@@ -32,15 +31,9 @@ connectionDB.on("disconnected", function () {
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
-  // const routeUrl = `/${req.url.split("/")[1]}`;
-  // const method = req.method;
   const router = getRouter(req);
-  router(req, res);
   console.log("router server", router);
-  // const handler = router[method][routeUrl];
-  // return handler(req, res);
-  // const controller = router.route(request);
-  // controller(request, response);
+  router(req, res);
 });
 
 server.listen(port, hostname, () => {
@@ -54,47 +47,4 @@ server.listen(port, hostname, () => {
     });
 });
 
-function getRouter(req) {
-  // const routeUrl = req.url.split("?")[0];
-  // console.log("url", req.url);
-  // switch (routeUrl.includes("/tasks")) {
-  //   case true:
-  //     return routes.task;
-  //   default:
-  //     return {};
-  // }
-
-  const parsedUrl = url.parse(req.url, true);
-  // console.log(parsedUrl);
-  console.log(routes.task[req.method][parsedUrl.pathname]);
-  if (routes.task[req.method][parsedUrl.pathname]) {
-    const currentRouteData = routes.task[req.method][parsedUrl.pathname];
-    if (
-      currentRouteData.middlewares &&
-      currentRouteData.middlewares.length > 0
-    ) {
-      return function controller(req, res) {
-        try {
-          let promise = currentRouteData.middlewares[0](req, res);
-          currentRouteData.middlewares.forEach((middleware, index) => {
-            if (index > 0) {
-              promise.then(() => middleware(req, res));
-            }
-          });
-          // Call controller after all interceptor (middlewares)
-          promise.then(() => currentRouteData.controller(req, res));
-          return promise;
-        } catch (error) {
-          handleError(error, "router.js", "route() -> controller()");
-          res.statusCode = 500;
-          res.end();
-        }
-      };
-    }
-
-    return currentRouteData.controller;
-  }
-
-  return handleNotFound;
-}
 

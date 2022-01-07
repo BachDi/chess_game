@@ -1,7 +1,7 @@
 const Repository = require('./base.repository')
-const { taskModel } = require('../models')
+const { TaskModel } = require("../models");
 const { DBCollection } = require("../datasource");
 
-const taskRepository = new Repository(DBCollection.task, taskModel);
+const taskRepository = new Repository(DBCollection.task, TaskModel);
 
 module.exports = taskRepository
