@@ -15,6 +15,7 @@ const taskHandler = {
 
 function handlerGetTask(req, res) {
   if (req.url.includes("tasks/:")) {
+    console.log(tasks);
     res.setHeader("Content-Type", "application/json");
     const startLetter = req.url.search(":");
     const id = req.url.slice(startLetter + 1, req.url.length);
