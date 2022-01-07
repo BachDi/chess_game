@@ -17,9 +17,9 @@ const dataSource = {
   writeDataToDatabase,
 };
 
-const getData = dataSource.getDataFromDatabase;
+// const getData = dataSource.getDataFromDatabase;
 // console.log(dataSource.getDataFromDatabase);
-getData("tasks");
+// getData("tasks");
 
 function getDataFromDatabase(dataBase) {
   const dataPath = `../database/${dataBase}.json`;
