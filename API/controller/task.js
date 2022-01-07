@@ -1,8 +1,8 @@
 const fs = require("fs");
 // const tasks = require("../database/tasks.json");
 
-const { DBCollections, fileSystemDataSource } = require("../datasource/index.js");
-const tasks = fileSystemDataSource.readCollection(DBCollections);
+const { DBCollection, fileSystemDataSource } = require("../datasource");
+const tasks = fileSystemDataSource.readCollection(DBCollection.task);
 
 const taskHandler = {
   handlerGetTask,
