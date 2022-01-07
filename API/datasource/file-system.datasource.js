@@ -7,9 +7,9 @@ function FileSystemDataSource(databasePath = '') {
 
         return fs.readFile(collectionPath)
             .then(data => {
-                const parsedData = JSON.parse(data) || []
-                console.log(parsedData);
-                return parsedData
+              const parsedData = JSON.parse(data) || [];
+              // console.log(parsedData);
+              return parsedData;
             })
             .catch(err => {
                 console.log(err);

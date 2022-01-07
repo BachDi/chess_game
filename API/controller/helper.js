@@ -1,25 +1,24 @@
-const crypto = require('crypto')
-const {
-    taskRepository
-} = require('../repository')
-const { taskModel } = require('../models')
+const { taskRepository } = require("../repository");
+const { taskModel } = require("../models");
 function findTask(id) {
-    return taskModel.findById(id)
+  return taskRepository.findById(id);
 }
 
 function insertTask(task) {
-    const newTask = {
-        taskName: task.taskName,
-        isDone: "false",
-        isDeleted: "false"
-    }
-    return taskModel.createOne(newTask)
+  const newTask = {
+    taskName: task.taskName,
+    isDone: false,
+    isDeleted: false,
+  };
+  return taskRepository.createOne(newTask);
 }
 
 function updateTask(task) {
-    return taskModel.updateOne(task)
+  return taskRepository.updateOne(task);
 }
 
 function removeTask(task) {
-    return taskModel.removeOne(task)
-} 
+  return taskRepository.removeOne(task);
+}
+
+module.exports = { findTask, insertTask, updateTask, removeTask };

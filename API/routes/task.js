@@ -1,20 +1,42 @@
-const taskHandler = require("../controller/task");
+const {
+  getTasks,
+  addTask,
+  editTask,
+  deleteTask,
+} = require("../controller/task");
+
+const parseRequestBody = require("../middlewares/parse-request-body");
 
 const taskRoutes = {
   GET: {
-    "/tasks": taskHandler.handlerGetTask,
+    "/tasks": {
+      controller: getTasks,
+      middlewares: [parseRequestBody],
+    },
   },
   DELETE: {
-    "/tasks": taskHandler.handlerDeleteTask,
+    "/tasks": {
+      controller: deleteTask,
+      middlewares: [parseRequestBody],
+    },
   },
   POST: {
-    "/tasks": taskHandler.handlerCreateTask,
+    "/tasks": {
+      controller: addTask,
+      middlewares: [parseRequestBody],
+    },
   },
   PUT: {
-    "/tasks": taskHandler.handlerUpdateTask,
+    "/tasks": {
+      controller: editTask,
+      middlewares: [parseRequestBody],
+    },
   },
   PATCH: {
-    "/tasks": taskHandler.handlerUpdateTask,
+    "/tasks": {
+      controller: editTask,
+      middlewares: [parseRequestBody],
+    },
   },
 };
 
