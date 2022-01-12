@@ -29,4 +29,12 @@ function validateEntityUniqueness(schema, entity, existingEntities) {
   return validationError
 }
 
-module.exports = { validateEntityFields, validateEntityUniqueness }
+function handleAuthResponse(response, isSuccessful = false) {
+  const data = {
+      status: isSuccessful ? 'success' : 'fail'
+  }
+  response.setHeader('Content-Type', 'application/json');
+  response.end(JSON.stringify(data));
+}
+
+module.exports = { validateEntityFields, validateEntityUniqueness, handleAuthResponse }

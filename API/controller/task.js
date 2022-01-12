@@ -92,4 +92,56 @@ function addTask(request, response) {
     });
 }
 
+
+function signUp(request, response) {
+  const chunks = []
+  request
+    .on('data', (chunk) => {
+      chunks.push(chunk)
+    })
+    .on('end', () => {
+      const user = JSON.parse(chunks.length > 0 ? chunks : '{}')
+      insertUser(user)
+        .then(() => {
+          handleAuthResponse(response, true)
+        })
+        .catch(err => {
+          handleError(err, 'controllers/index.js', 'signUp')
+          handleAuthResponse(response, false)
+        })
+    })
+}
+
+function signIn(request, response) {
+  const chunks = []
+  request
+    .on('data', (chunk) => {
+      chunks.push(chunk)
+    })
+    .on('end', () => {
+      const user = JSON.parse(chunks.toString())
+      response.setHeader('Content-Type', 'application/json');
+      verifyUser(user).then(foundUser => {
+        if (!foundUser) {
+          throw new Error('User not found')
+        }
+        const token = jwt.sign({ userId: foundUser.id },
+          'RANDOM_TOKEN_SECRET', { expiresIn: '24h' }
+        )
+        const data = {
+          token
+        }
+        response.end(JSON.stringify(data));
+      }).catch(err => {
+        handleError(err, 'controllers/index.js', 'signIn')
+        response.statusCode = 404
+        response.end('Username or password is not correct.')
+      })
+    })
+}
+
+function pingWithAuth(req, res) {
+  res.end('Success')
+}
+
 module.exports = { handleNotFound, getTasks, addTask, editTask, deleteTask };
