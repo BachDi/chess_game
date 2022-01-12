@@ -85,15 +85,15 @@ function handleNotFound(req, res) {
 }
 
 function getTasks(request, response) {
-  const chunks = [];
+  const chunks = []
   request
-    .on("data", (chunk) => {
-      chunks.push(chunk);
+    .on('data', (chunk) => {
+      chunks.push(chunk)
     })
-    .on("end", () => {
-      const userId = JSON.parse(chunks.toString());
+    .on('end', () => {
+      // const userId = JSON.parse(chunks.toString())
       response.setHeader("Content-Type", "application/json");
-      findTask(userId)
+      findTask()
         .then((data) => {
           response.end(JSON.stringify(data));
         })
@@ -101,7 +101,7 @@ function getTasks(request, response) {
           handleError(err, "controllers/index.js", "addTask");
           handleAuthResponse(response, false);
         });
-    });
+    })
 }
 
 function editTask(request, response) {

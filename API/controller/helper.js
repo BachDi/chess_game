@@ -1,7 +1,7 @@
 const { taskRepository } = require("../repository");
 const { taskModel } = require("../models");
-function findTask(id) {
-  return taskRepository.findById(id);
+function findTask() {
+  return taskRepository.find();
 }
 
 function insertTask(task) {
