@@ -1,5 +1,5 @@
 const { taskRepository } = require("../repository");
-const { taskModel } = require("../models");
+
 function findTask() {
   return taskRepository.find();
 }

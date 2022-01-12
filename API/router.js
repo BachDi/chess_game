@@ -1,13 +1,11 @@
 const url = require("url");
-const { handleNotFound } = require("./controller/task");
 const {
   getTasks,
   addTask,
   editTask,
   deleteTask,
+  handleNotFound,
 } = require("./controller/task");
-
-const parseRequestBody = require("./middlewares/parse-request-body");
 
 const { handlerGetImage } = require("./controller/image");
 
@@ -46,7 +44,6 @@ function getRouter(req) {
   const parsedUrl = url.parse(req.url, true);
   if (routes[req.method] && routes[req.method][parsedUrl.pathname]) {
     const currentRouteData = routes[req.method][parsedUrl.pathname];
-    console.log(currentRouteData);
     if (
       currentRouteData.middlewares &&
       currentRouteData.middlewares.length > 0
@@ -57,22 +54,18 @@ function getRouter(req) {
           currentRouteData.middlewares.forEach((middleware, index) => {
             if (index > 0) {
               promise.then(() => middleware(req, res));
-              console.log("1");
             }
           });
           // Call controller after all interceptor (middlewares)
           promise.then(() => currentRouteData.controller(req, res));
-          console.log("2", promise);
           return promise;
         } catch (error) {
           handleError(error, "router.js", "route() -> controller()");
-          console.log("3");
           res.statusCode = 500;
           res.end();
         }
       };
     }
-    console.log("4");
     return routes[req.method][parsedUrl.pathname].controller;
   }
 
