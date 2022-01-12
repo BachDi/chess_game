@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { DBCollection } = require("../datasource");
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const taskSchema = new Schema({
   taskname: String,
@@ -7,6 +6,6 @@ const taskSchema = new Schema({
   isDeleted: Boolean,
 });
 
-const Task = mongoose.model(DBCollection.task, taskSchema);
+const Task = mongoose.model("tasks", taskSchema);
 
-module.exports = {Task}
+module.exports = { Task };
