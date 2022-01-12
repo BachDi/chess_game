@@ -10,6 +10,7 @@ function insertTask(task) {
     isDone: false,
     isDeleted: false,
   };
+  console.log(newTask);
   return taskRepository.createOne(newTask);
 }
 

@@ -6,6 +6,8 @@ const {
   deleteTask,
   handleNotFound,
 } = require("./controller/task");
+const { handleError } = require("./helpers");
+
 
 const { handlerGetImage } = require("./controller/image");
 
