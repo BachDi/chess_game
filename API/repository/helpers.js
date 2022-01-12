@@ -1,4 +1,6 @@
 function validateEntityFields(schema, entity) {
+
+  console.log(schema);
   let validationError = ''
   Object.keys(schema).every(field => {
     if (field === 'id') {

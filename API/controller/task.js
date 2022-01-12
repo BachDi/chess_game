@@ -82,6 +82,7 @@ function addTask(request, response) {
     })
     .on("end", () => {
       const task = JSON.parse(chunks.length > 0 ? chunks : "{}");
+      console.log("check", task);
       insertTask(task)
         .then(() => {
           handleAuthResponse(response, true);
