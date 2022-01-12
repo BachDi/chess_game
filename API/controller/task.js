@@ -2,6 +2,7 @@
 const url = require("url");
 const { handleError } = require("../helpers");
 const { handleAuthResponse } = require("../repository/helpers");
+const { Task } = require("../models/task");
 
 const {
   findTask,
@@ -16,24 +17,10 @@ function handleNotFound(req, res) {
   res.end(`Route ${parsedUrl.pathname} not found.`);
 }
 
-function getTasks(request, response) {
-  const chunks = [];
-  request
-    .on("data", (chunk) => {
-      chunks.push(chunk);
-    })
-    .on("end", () => {
-      // const userId = JSON.parse(chunks.toString())
-      response.setHeader("Content-Type", "application/json");
-      findTask()
-        .then((data) => {
-          response.end(JSON.stringify(data));
-        })
-        .catch((err) => {
-          handleError(err, "controllers/index.js", "getTask");
-          handleAuthResponse(response, false);
-        });
-    });
+async function getTasks(request, response) {
+  console.log(Task);
+  const tasks = await Task.find();
+  return response.end(JSON.stringify(tasks));
 }
 
 function editTask(request, response) {
