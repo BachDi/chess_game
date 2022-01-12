@@ -15,7 +15,6 @@ const routes = {
   GET: {
     "/tasks": {
       controller: getTasks,
-      middlewares: [parseRequestBody],
     },
     image: {
       controller: handlerGetImage,
@@ -24,25 +23,21 @@ const routes = {
   DELETE: {
     "/tasks": {
       controller: deleteTask,
-      middlewares: [parseRequestBody],
     },
   },
   POST: {
     "/tasks": {
       controller: addTask,
-      middlewares: [parseRequestBody],
     },
   },
   PUT: {
     "/tasks": {
       controller: editTask,
-      middlewares: [parseRequestBody],
     },
   },
   PATCH: {
     "/tasks": {
       controller: editTask,
-      middlewares: [parseRequestBody],
     },
   },
 };
@@ -51,7 +46,7 @@ function getRouter(req) {
   const parsedUrl = url.parse(req.url, true);
   if (routes[req.method] && routes[req.method][parsedUrl.pathname]) {
     const currentRouteData = routes[req.method][parsedUrl.pathname];
-    console.log(routes[req.method][parsedUrl.pathname].controller);
+    console.log(currentRouteData);
     if (
       currentRouteData.middlewares &&
       currentRouteData.middlewares.length > 0
