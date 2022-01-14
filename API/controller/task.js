@@ -7,9 +7,7 @@ const {
   findTasks,
   insertTask,
   updateTask,
-  removeTask,
   findTaskById,
-  verifyTask,
 } = require("./helpers");
 
 function handleNotFound(request, response) {
@@ -30,7 +28,7 @@ function getTasks(request, response) {
     })
 }
 
-function getOneTask(request, response) {
+function getTaskById(request, response) {
   response.setHeader('Content-Type', 'application/json');
   const taskId = request.body;
   findTaskById(taskId)
@@ -49,7 +47,7 @@ function getOneTask(request, response) {
         throw new Error('Unknown task');
       }
     }).catch(error => {
-      handleError(error, 'controllers/task.js', 'getOneTask');
+      handleError(error, 'controllers/task.js', 'getTaskById');
       handleAuthResponse(response, false);
     })
 }
@@ -169,4 +167,4 @@ function pingWithAuth(request, res) {
   res.end('Success')
 }
 
-module.exports = { handleNotFound, getTasks, getOneTask, addTask, editTaskById, deleteTaskById };
+module.exports = { handleNotFound, getTasks, getTaskById, addTask, editTaskById, deleteTaskById };

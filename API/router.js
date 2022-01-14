@@ -5,7 +5,7 @@ const {
   editTask,
   deleteTask,
   handleNotFound,
-  getOneTask,
+  getTaskById,
   editTaskById,
   deleteTaskById,
 } = require("./controller/task");
@@ -37,7 +37,7 @@ const routes = {
       middlewares: [parseRequestBody]
     },
     "/find-task": {
-      controller: getOneTask,
+      controller: getTaskById,
       middlewares: [parseRequestBody]
     },
   },

@@ -1,6 +1,7 @@
 // const { Task } = require("../repository");
 const crypto = require('crypto');
 const { taskModel } = require("../models");
+const { userModel } = require("../models");
 
 function findTasks(task = {}) {
   return taskModel.find(task);
@@ -41,7 +42,7 @@ function hashPassword(password) {
 }
 
 function verifyUser(checkingUser) {
-  return userRepository
+  return userModel
     .find()
     .then((users) =>
       (users || []).find(
