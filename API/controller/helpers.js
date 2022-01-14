@@ -3,6 +3,8 @@ const crypto = require('crypto');
 const { taskModel } = require("../models");
 const { userModel } = require("../models");
 
+//----Task----//
+
 function findTasks(task = {}) {
   return taskModel.find(task);
 }
@@ -17,12 +19,12 @@ function insertTask(task) {
   return taskModel.create(newTask);
 }
 
-function updateTask(taskID, task) {
-  return taskModel.findByIdAndUpdate(taskID, task);
+function updateTask(taskId, task) {
+  return taskModel.findByIdAndUpdate(taskId, task);
 }
 
-function findTaskById(taskID) {
-  return taskModel.findById(taskID);
+function findTaskById(taskId) {
+  return taskModel.findById(taskId);
 }
 
 
@@ -34,6 +36,31 @@ function handleAuthResponse(response, isSuccessful = false) {
   response.end(JSON.stringify(data));
 }
 
+//----User----//
+
+function insertUser(user) {
+  const password = user.password ? hashPassword(user.password) : undefined
+  const newUser = {
+    username: user.username,
+    password: password,
+    tasks: user.tasks,
+    isAdmin: user.isAdmin,
+  };
+  console.log(newUser);
+  return userModel.create(newUser);
+}
+
+function findUsers(user = {}) {
+  return userModel.find(user);
+}
+
+function updateUser(userId, user) {
+  return userModel.findByIdAndUpdate(userId, user);
+}
+
+function findUserById(userId) {
+  return userModel.findById(userId);
+}
 
 function hashPassword(password) {
   // const hmac = crypto.createHmac('sha256', 'Sup3r_s3cr3t_k3yyyy');
@@ -41,16 +68,17 @@ function hashPassword(password) {
   return hash.update(password).digest("hex");
 }
 
-function verifyUser(checkingUser) {
-  return userModel
-    .find()
-    .then((users) =>
-      (users || []).find(
-        (user) =>
-          user.username === checkingUser.username &&
-          user.password === hashPassword(checkingUser.password)
-      )
-    );
+function validateUser(user) {
+  return userModel.find({ username: user.username, password: hashPassword(user.password) });
+}
+
+function verifyUser(user) {
+  return {
+    username: user.username,
+    password: user.password,
+    isAdmin: (user.isAdmin === 'true') ? true : false,
+    isDeleted: (user.isDeleted === 'true') ? true : false,
+  }
 }
 
 module.exports = {
@@ -59,5 +87,10 @@ module.exports = {
   updateTask,
   findTaskById,
   handleAuthResponse,
+  findUsers,
+  insertUser,
+  updateUser,
+  findUserById,
+  validateUser,
   verifyUser,
 };

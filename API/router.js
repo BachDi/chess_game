@@ -2,8 +2,6 @@ const url = require("url");
 const {
   getTasks,
   addTask,
-  editTask,
-  deleteTask,
   handleNotFound,
   getTaskById,
   editTaskById,
@@ -14,43 +12,55 @@ const { parseRequestBody } = require('./middlewares/parse-request-body')
 
 
 const { handlerGetImage } = require("./controller/image");
+const { signUp, getUsers, getUserById, editUserById, deleteUserById } = require("./controller/user");
 
 const routes = {
   GET: {
     "/tasks": {
       controller: getTasks,
-      middlewares: [parseRequestBody]
+      middlewares: [parseRequestBody],
     },
-    image: {
-      controller: handlerGetImage,
+    "/users": {
+      controller: getUsers,
+      middlewares: [parseRequestBody],
     },
   },
   DELETE: {
     "/delete-task": {
       controller: deleteTaskById,
-      middlewares: [parseRequestBody]
+      middlewares: [parseRequestBody],
+    },
+    "/delete-user": {
+      controller: deleteUserById,
+      middlewares: [parseRequestBody],
     },
   },
   POST: {
     "/tasks": {
       controller: addTask,
-      middlewares: [parseRequestBody]
+      middlewares: [parseRequestBody],
     },
     "/find-task": {
       controller: getTaskById,
-      middlewares: [parseRequestBody]
+      middlewares: [parseRequestBody],
     },
-  },
-  PUT: {
-    "/tasks": {
-      controller: editTaskById,
-      middlewares: [parseRequestBody]
+    "/sign-up": {
+      controller: signUp,
+      middlewares: [parseRequestBody],
+    },
+    "/find-user": {
+      controller: getUserById,
+      middlewares: [parseRequestBody],
     },
   },
   PATCH: {
     "/edit-task": {
       controller: editTaskById,
-      middlewares: [parseRequestBody]
+      middlewares: [parseRequestBody],
+    },
+    "/edit-user": {
+      controller: editUserById,
+      middlewares: [parseRequestBody],
     },
   },
 };
