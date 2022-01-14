@@ -24,4 +24,4 @@ function parseRequestBody(request, response) {
   }
 }
 
-module.exports = parseRequestBody
+module.exports = {parseRequestBody}

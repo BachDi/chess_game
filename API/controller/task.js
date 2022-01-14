@@ -2,47 +2,68 @@
 const url = require("url");
 const { handleError } = require("../helpers");
 const { handleAuthResponse } = require("../repository/helpers");
-const { Task } = require("../models/task");
 
 const {
   findTask,
   insertTask,
   updateTask,
   removeTask,
-} = require("../controller/helper");
+  findTaskById,
+  verifyTask,
+} = require("./helpers");
 
-function handleNotFound(req, res) {
-  const parsedUrl = url.parse(req.url, true);
-  res.statusCode = 404;
-  res.end(`Route ${parsedUrl.pathname} not found.`);
+function handleNotFound(request, response) {
+  const parsedUrl = url.parse(request.url, true);
+  response.statusCode = 404;
+  response.end(`Route ${parsedUrl.pathname} not found.`);
 }
 
-async function getTasks(request, response) {
-  console.log(Task);
-  const tasks = await Task.find();
-  return response.end(JSON.stringify(tasks));
-}
-
-function editTask(request, response) {
-  const chunks = [];
-  request
-    .on("data", (chunk) => {
-      chunks.push(chunk);
+function getTasks(request, response) {
+  response.setHeader('Content-Type', 'application/json');
+  findTask()
+    .then(data => {
+      response.end(JSON.stringify(data))
     })
-    .on("end", () => {
-      const task = JSON.parse(chunks.length > 0 ? chunks : "{}");
-      updateTask(task)
-        .then(() => {
-          handleAuthResponse(response, true);
-        })
-        .catch((err) => {
-          handleError(err, "controllers/index.js", "editTask");
-          handleAuthResponse(response, false);
-        });
-    });
+    .catch(error => {
+      handleError(error, "controllers/task.js", "getTask")
+      handleAuthResponse(response, false);
+    })
 }
 
-function deleteTask(request, response) {
+function getOneTask(request, response) {
+  response.setHeader('Content-Type', 'application/json');
+  const task = request.body;
+  findTaskById(task)
+    .then(foundTask => {
+      if (foundTask && foundTask.length > 0) {
+        let info = {
+          taskname: foundTask[0].taskname,
+        }
+        responseponse.statusCode = 200
+        response.end(JSON.stringify(info));
+      }
+      else {
+        throw new Error('Unknown task');
+      }
+    }).catch(error => {
+      handleError(error, 'controllers/task.js', 'getOneTask');
+      handleAuthResponse(response, false);
+    })
+}
+
+function editTaskById(request, response) {
+  const task = request.body;
+  const taskId = task._id;
+  updateTask(taskId, task)
+    .then(() => {
+      handleAuthResponse(response, true)
+    }).catch(error => {
+      handleError(error, 'controllers/helpers.js', 'updateTaskByID');
+      handleAuthResponse(response, false);
+    })
+}
+
+function deleteTaskById(request, response) {
   const chunks = [];
   request
     .on("data", (chunk) => {
@@ -55,22 +76,32 @@ function deleteTask(request, response) {
           handleAuthResponse(response, true);
         })
         .catch((err) => {
-          handleError(err, "controllers/index.js", "deleteTask");
+          handleError(err, "controllers/index.js", "deleteTaskById");
           handleAuthResponse(response, false);
         });
     });
 }
 
 function addTask(request, response) {
-  const chunks = [];
-  request
-    .on("data", (chunk) => {
-      chunks.push(chunk);
-    })
-    .on("end", () => {
-      const task = JSON.parse(chunks.length > 0 ? chunks : "{}");
-      console.log("check", task);
-      insertTask(task)
+  // const chunks = [];
+  // request
+  //   .on("data", (chunk) => {
+  //     chunks.push(chunk);
+  //   })
+  //   .on("end", () => {
+  //     const task = JSON.parse(chunks.length > 0 ? chunks : "{}");
+  //     console.log("check", task);
+  //     insertTask(task)
+  //       .then(() => {
+  //         handleAuthResponse(response, true);
+  //       })
+  //       .catch((err) => {
+  //         handleError(err, "controllers/index.js", "addTask");
+  //         handleAuthResponse(response, false);
+  //       });
+  //   });
+    const task = verifyTask(request.body);
+    insertTask(task)
         .then(() => {
           handleAuthResponse(response, true);
         })
@@ -78,7 +109,7 @@ function addTask(request, response) {
           handleError(err, "controllers/index.js", "addTask");
           handleAuthResponse(response, false);
         });
-    });
+
 }
 
 
@@ -129,8 +160,8 @@ function signIn(request, response) {
     })
 }
 
-function pingWithAuth(req, res) {
+function pingWithAuth(request, res) {
   res.end('Success')
 }
 
-module.exports = { handleNotFound, getTasks, addTask, editTask, deleteTask };
+module.exports = { handleNotFound, getTasks, getOneTask, addTask, editTaskById, deleteTaskById };

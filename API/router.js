@@ -5,8 +5,10 @@ const {
   editTask,
   deleteTask,
   handleNotFound,
+  getOneTask,
 } = require("./controller/task");
 const { handleError } = require("./helpers");
+const { parseRequestBody } = require('./middlewares/parse-request-body')
 
 
 const { handlerGetImage } = require("./controller/image");
@@ -15,6 +17,7 @@ const routes = {
   GET: {
     "/tasks": {
       controller: getTasks,
+      middlewares: [parseRequestBody]
     },
     image: {
       controller: handlerGetImage,
@@ -28,6 +31,11 @@ const routes = {
   POST: {
     "/tasks": {
       controller: addTask,
+      middlewares: [parseRequestBody]
+    },
+    "/task": {
+      controller: getOneTask,
+      middlewares: [parseRequestBody]
     },
   },
   PUT: {
