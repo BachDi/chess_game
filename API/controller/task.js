@@ -37,7 +37,7 @@ function getOneTask(request, response) {
     .then(foundTask => {
       if (foundTask && foundTask.length > 0) {
         let info = {
-          taskname: foundTask[0].taskname,
+          taskName: foundTask[0].taskName,
         }
         responseponse.statusCode = 200
         response.end(JSON.stringify(info));
@@ -100,15 +100,16 @@ function addTask(request, response) {
   //         handleAuthResponse(response, false);
   //       });
   //   });
-    const task = verifyTask(request.body);
-    insertTask(task)
-        .then(() => {
-          handleAuthResponse(response, true);
-        })
-        .catch((err) => {
-          handleError(err, "controllers/index.js", "addTask");
-          handleAuthResponse(response, false);
-        });
+  const task = request.body;
+
+  insertTask(task)
+    .then(() => {
+      handleAuthResponse(response, true);
+    })
+    .catch((err) => {
+      handleError(err, "controllers/index.js", "addTask");
+      handleAuthResponse(response, false);
+    });
 
 }
 

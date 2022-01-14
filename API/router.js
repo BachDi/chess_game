@@ -33,7 +33,7 @@ const routes = {
       controller: addTask,
       middlewares: [parseRequestBody]
     },
-    "/task": {
+    "/find-task": {
       controller: getOneTask,
       middlewares: [parseRequestBody]
     },

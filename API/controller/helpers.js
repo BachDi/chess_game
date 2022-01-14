@@ -24,13 +24,6 @@ function findTaskById(taskID) {
   return taskModel.findById(taskID);
 }
 
-function verifyTask(task){
-  return {
-      taskname: task.taskname,
-      isDone: (task.isDone === 'true') ? true : false,
-      isDeleted: (task.isDeleted === 'true') ? true: false,
-  }
-}
 
 function handleAuthResponse(response, isSuccessful = false) {
   const data = {

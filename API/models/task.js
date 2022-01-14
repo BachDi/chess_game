@@ -3,17 +3,17 @@ const mongoose = require('mongoose');
 const  Schema  = mongoose.Schema;
 
 const taskSchema = new Schema({
-  taskname: {
+  taskName: {
     type: String,
     required: true
   },
   isDone: {
     type: Boolean,
-    required: true
+    default: true
   },
   isDeleted: {
     type: Boolean,
-    required: true
+    default: false
   },
 });
 
