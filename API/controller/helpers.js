@@ -2,7 +2,7 @@
 const crypto = require('crypto');
 const { taskModel } = require("../models");
 
-function findTask(task = {}) {
+function findTasks(task = {}) {
   return taskModel.find(task);
 }
 
@@ -53,11 +53,10 @@ function verifyUser(checkingUser) {
 }
 
 module.exports = {
-  findTask,
+  findTasks,
   insertTask,
   updateTask,
   findTaskById,
-  verifyTask,
   handleAuthResponse,
   verifyUser,
 };

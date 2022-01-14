@@ -6,6 +6,8 @@ const {
   deleteTask,
   handleNotFound,
   getOneTask,
+  editTaskById,
+  deleteTaskById,
 } = require("./controller/task");
 const { handleError } = require("./helpers");
 const { parseRequestBody } = require('./middlewares/parse-request-body')
@@ -24,8 +26,9 @@ const routes = {
     },
   },
   DELETE: {
-    "/tasks": {
-      controller: deleteTask,
+    "/delete-task": {
+      controller: deleteTaskById,
+      middlewares: [parseRequestBody]
     },
   },
   POST: {
@@ -40,12 +43,14 @@ const routes = {
   },
   PUT: {
     "/tasks": {
-      controller: editTask,
+      controller: editTaskById,
+      middlewares: [parseRequestBody]
     },
   },
   PATCH: {
-    "/tasks": {
-      controller: editTask,
+    "/edit-task": {
+      controller: editTaskById,
+      middlewares: [parseRequestBody]
     },
   },
 };

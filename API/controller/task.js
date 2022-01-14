@@ -4,7 +4,7 @@ const { handleError } = require("../helpers");
 const { handleAuthResponse } = require("../repository/helpers");
 
 const {
-  findTask,
+  findTasks,
   insertTask,
   updateTask,
   removeTask,
@@ -20,7 +20,7 @@ function handleNotFound(request, response) {
 
 function getTasks(request, response) {
   response.setHeader('Content-Type', 'application/json');
-  findTask()
+  findTasks()
     .then(data => {
       response.end(JSON.stringify(data))
     })
@@ -32,14 +32,17 @@ function getTasks(request, response) {
 
 function getOneTask(request, response) {
   response.setHeader('Content-Type', 'application/json');
-  const task = request.body;
-  findTaskById(task)
+  const taskId = request.body;
+  findTaskById(taskId)
     .then(foundTask => {
-      if (foundTask && foundTask.length > 0) {
+      if (foundTask) {
         let info = {
-          taskName: foundTask[0].taskName,
+          _id: foundTask._id,
+          taskName: foundTask.taskName,
+          isDone: foundTask.isDone,
+          isDeleted: foundTask.isDeleted
         }
-        responseponse.statusCode = 200
+        response.statusCode = 200
         response.end(JSON.stringify(info));
       }
       else {
@@ -58,28 +61,29 @@ function editTaskById(request, response) {
     .then(() => {
       handleAuthResponse(response, true)
     }).catch(error => {
-      handleError(error, 'controllers/helpers.js', 'updateTaskByID');
+      handleError(error, 'controllers/helpers.js', 'editTaskByID');
       handleAuthResponse(response, false);
     })
 }
 
 function deleteTaskById(request, response) {
-  const chunks = [];
-  request
-    .on("data", (chunk) => {
-      chunks.push(chunk);
-    })
-    .on("end", () => {
-      const task = JSON.parse(chunks.length > 0 ? chunks : "{}");
-      removeTask(task)
-        .then(() => {
-          handleAuthResponse(response, true);
-        })
-        .catch((err) => {
-          handleError(err, "controllers/index.js", "deleteTaskById");
-          handleAuthResponse(response, false);
-        });
-    });
+  let task = request.body;
+  const taskId = task._id;
+  findTaskById(taskId).then(foundTask => {
+    debugger;
+    if (foundTask) {
+      foundTask.isDeleted = true;
+      updateTask(taskId, foundTask).then(() => {
+        handleAuthResponse(response, true);
+      })
+    }
+    else {
+      handleAuthResponse(response, false)
+    }
+  }).catch(error => {
+    handleError(error, 'controllers/helpers.tasks.js', 'deleteTaskByID');
+    handleAuthResponse(response, false);
+  })
 }
 
 function addTask(request, response) {
